@@ -1,7 +1,10 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:shopifyclone/TextStyles/TextStyles.dart';
+import 'package:shopifyclone/UI/Brands.dart';
+import 'package:shopifyclone/UI/Categories.dart';
 import 'package:shopifyclone/UI/HomeScreen.dart';
+import 'package:shopifyclone/Widgets/Home/HomeWidgets.dart';
 class BottomNavigation extends StatefulWidget {
   const BottomNavigation({super.key});
 
@@ -22,7 +25,9 @@ class _BottomNavigationState extends State<BottomNavigation> {
   bool Chattapped=false;
   int pageindex=0;
   final pages=[
-    HomeScreen()
+    HomeScreen(),
+    BrandsScreen(),
+    CategoriesScreen(),
   ];
   @override
   Widget build(BuildContext context) {
@@ -50,11 +55,13 @@ class _BottomNavigationState extends State<BottomNavigation> {
                 },
                 onTapCancel: (){
                   setState(() {
+
                     Hometapped=false;
                   });
                 },
                 onTap:(){
                   Timer(Duration(milliseconds: 100),(){
+                    pageindex=0;
                     Home=true;
                     Brands=false;
                     Categories=false;
@@ -71,7 +78,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
                         width: 50,
                         height: 30,
                         decoration: BoxDecoration(
-                          color: Hometapped?Colors.grey.shade100:(Home?Colors.black:null),
+                          color: Hometapped?Colors.grey.shade100:(Home?ThemeColor:null),
                           borderRadius: BorderRadius.circular(10),
                         ),
                         child: Icon(Icons.home_outlined,size: 20,color: Hometapped?Colors.black12:(Home?Colors.white:Colors.black54))),
@@ -102,6 +109,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
                  },
                  onTap:(){
                    Timer(Duration(milliseconds: 100),(){
+                     pageindex=1;
                      Home=false;
                      Brands=true;
                      Categories=false;
@@ -118,7 +126,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
                          width: 50,
                          height: 30,
                          decoration: BoxDecoration(
-                           color:Brandstapped?Colors.grey.shade100:(Brands?Colors.black:null),
+                           color:Brandstapped?Colors.grey.shade100:(Brands?ThemeColor:null),
                            borderRadius: BorderRadius.circular(10),
                          ),
                          child: Icon(Icons.diamond_outlined,size: 20,color:Brandstapped?Colors.black12:(Brands?Colors.white:Colors.black54))),
@@ -149,6 +157,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
                 },
                 onTap:(){
                   Timer(Duration(milliseconds:100),(){
+                    pageindex=2;
                     Home=false;
                     Brands=false;
                     Categories=true;
@@ -165,7 +174,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
                         width: 50,
                         height: 30,
                         decoration: BoxDecoration(
-                          color: Categoriestapped?Colors.grey.shade100:(Categories?Colors.black:null),
+                          color: Categoriestapped?Colors.grey.shade100:(Categories?ThemeColor:null),
                           borderRadius: BorderRadius.circular(10),
                         ),
                         child: Icon(Icons.category_outlined,size: 20,color: Categoriestapped?Colors.black12:(Categories?Colors.white:Colors.black54))),
@@ -173,50 +182,6 @@ class _BottomNavigationState extends State<BottomNavigation> {
                       padding: const EdgeInsets.only(top: 2),
                       child: Text("Categories",style: Categoriestapped?BottomNavigationstyle.copyWith(color: Colors.grey.shade200):BottomNavigationstyle,),
                     )
-                  ],
-                ),
-              ),
-              GestureDetector(
-                onTapDown:(details){
-                  setState(() {
-                    Blogtapped=true;
-                  });
-
-                } ,
-                onTapUp:(details){
-                  Blogtapped=false;
-                  setState(() {
-
-                  });
-                },
-                onTapCancel: (){
-                  setState(() {
-                    Blogtapped=false;
-                  });
-                },
-                onTap:(){
-                  Timer(Duration(milliseconds: 100),(){
-                    Home=false;
-                    Brands=false;
-                    Categories=false;
-                    Blog=true;
-                    Chat=false;
-                    setState(() {
-
-                    });
-                  });
-                } ,
-                child: Column(
-                  children: [
-                    AnimatedContainer(duration: Duration(milliseconds: 500),
-                        width: 50,
-                        height: 30,
-                        decoration: BoxDecoration(
-                          color: Blogtapped?Colors.grey.shade100:(Blog?Colors.black:null),
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        child: Icon(Icons.menu_book_outlined,size: 20,color: Blogtapped?Colors.black12:(Blog?Colors.white:Colors.black54))),
-                    Text("Blog",style: Blogtapped?BottomNavigationstyle.copyWith(color: Colors.grey.shade200):BottomNavigationstyle,)
                   ],
                 ),
               ),
@@ -257,7 +222,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
                         width: 50,
                         height: 30,
                         decoration: BoxDecoration(
-                          color: Chattapped?Colors.grey:(Chat?Colors.black:null),
+                          color: Chattapped?Colors.grey:(Chat?ThemeColor:null),
                           borderRadius: BorderRadius.circular(10),
                         ),
                         child: Icon(Icons.person_pin_outlined,size: 20,color: Chattapped?Colors.black12:(Chat?Colors.white:Colors.black54))),

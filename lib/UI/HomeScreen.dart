@@ -2,8 +2,10 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:shopifyclone/CommonWidgets/Widegts.dart';
 import 'package:shopifyclone/TextStyles/TextStyles.dart';
+import 'package:shopifyclone/Utilities/Controller.dart';
+import 'package:shopifyclone/Widgets/Home/HomeWidgets.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-
+import 'package:get/get.dart';
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
@@ -12,93 +14,21 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  List<String> DealsYouCantMiss=["assets/images/HomeScreen/Tresme.png","assets/images/HomeScreen/Tresme.png"];
+  BagController _bagController=Get.put(BagController());
+  List<String> DealsYouCantMiss = [
+    "assets/images/HomeScreen/Tresme.png",
+    "assets/images/HomeScreen/Tresme.png"
+  ];
   int currentindex = 0;
   List<String> CrousalSlider = [
     "assets/images/CrousalSlider/Nivea.png",
     "assets/images/CrousalSlider/PinkBeauty.png"
   ];
-  List<String> DrawerList = [
-    "My Account",
-    "Loyalty Program",
-    "Vouchers & Offers",
-    "My WishList",
-    "My Orders",
-    "Addresses",
-    "Notifications"
-  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: SafeArea(
-          child: Drawer(
-        backgroundColor: Colors.black,
-        child: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(top: 20),
-              child: Column(
-                children: [
-                  Image.asset(
-                    "assets/images/PersonIcon.png",
-                    height: 70,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 5),
-                    child: Text(
-                      "Hello",
-                      style: Whitebackgroundstyle.copyWith(
-                          fontWeight: FontWeight.normal),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 5),
-                    child: Text(
-                      "Guest",
-                      style: Whitebackgroundstyle.copyWith(
-                          fontSize: 18, fontWeight: FontWeight.w500),
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.symmetric(vertical: 10),
-                    child: Container(
-                      height: 20,
-                      width: 80,
-                      decoration: BoxDecoration(
-                          color: Color(0xffc56cc6),
-                          borderRadius: BorderRadius.circular(15)),
-                      child: Center(
-                          child: Text(
-                        "0.00 Points",
-                        style: Whitebackgroundstyle.copyWith(
-                            color: Colors.black, fontSize: 12),
-                      )),
-                    ),
-                  )
-                ],
-              ),
-            ),
-            Flexible(
-              flex: 1,
-              child: Padding(
-                padding: const EdgeInsets.only(top: 50),
-                child: ListView.builder(
-                  itemCount: DrawerList.length,
-                  itemBuilder: (context, index) => Padding(
-                    padding:
-                        const EdgeInsets.symmetric(vertical: 8, horizontal: 15),
-                    child: Text(
-                      DrawerList[index],
-                      style: TextStyle(color: Colors.white),
-                    ),
-                  ),
-                ),
-              ),
-            ),
-            Divider(),
-          ],
-        ),
-      )),
+          child:mDrawer()),
       appBar: AppBar(
         title: CommonWidgets().ComAppbar(context),
       ),
@@ -108,7 +38,10 @@ class _HomeScreenState extends State<HomeScreen> {
             CrousalSliderWidget(),
             Padding(
               padding: const EdgeInsets.only(top: 15),
-              child: Text("Unbeatable 🔥 beauty deals",style: Whitebackgroundstyle.copyWith(color: Colors.black),),
+              child: Text(
+                "Unbeatable 🔥 beauty deals",
+                style: Whitebackgroundstyle.copyWith(color: Colors.black),
+              ),
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -116,119 +49,202 @@ class _HomeScreenState extends State<HomeScreen> {
                   height: 80,
                   width: MediaQuery.of(context).size.width,
                   child: ClipRRect(
-                    borderRadius: BorderRadius.circular(15),
-                      child: Image.asset("assets/images/HomeScreen/WinterBanner.png",fit: BoxFit.fill,))),
+                      borderRadius: BorderRadius.circular(15),
+                      child: Image.asset(
+                        "assets/images/HomeScreen/WinterBanner.png",
+                        fit: BoxFit.fill,
+                      ))),
             ),
             Padding(
               padding: const EdgeInsets.only(top: 20),
-              child: Text("💄 DEALS YOU CANNOT MISS",style: Whitebackgroundstyle.copyWith(color: Colors.black)),
+              child: Text("💄 Categories",
+                  style: Whitebackgroundstyle.copyWith(color: Colors.black)),
             ),
-           Padding(
-             padding: const EdgeInsets.only(top: 5),
-             child: Row(
-               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-               children: [
-                 SizedBox(
-                   height: 180,
-                   width: 180,
-             
-                   child: ClipRRect(
-                       borderRadius: BorderRadius.circular(15),
-                       child: Image.asset("assets/images/HomeScreen/Tresme.png",fit: BoxFit.fill,)),
-                 ),
-                 SizedBox(
-                   height: 180,
-                   width:180,
-             
-                   child: ClipRRect(
-                       borderRadius: BorderRadius.circular(15),
-                       child: Image.asset("assets/images/HomeScreen/Tresme.png",fit: BoxFit.fill,)),
-                 )
-               ],
-             ),
-           ),
+            DealsYouCanotMiss(),
+            DealsYouCanotMiss(),
             Padding(
-              padding: const EdgeInsets.only(top: 5),
+              padding: const EdgeInsets.only(top: 20),
+              child: Text(
+                "Save more 💵 on top brands",
+                style: Whitebackgroundstyle.copyWith(color: Colors.black),
+              ),
+            ),
+           SaveMore(context, imageloc: "assets/images/HomeScreen/WinterBanner.png"),
+           SaveMore(context, imageloc: "assets/images/HomeScreen/WinterBanner.png"),
+           SaveMore(context, imageloc: "assets/images/HomeScreen/WinterBanner.png"),
+           SaveMore(context, imageloc: "assets/images/HomeScreen/WinterBanner.png"),
+
+            HomeHeadline(Heading: "Featured Products",mtop: 10,mbottom: 10),
+           FeaturedProducts(context,),
+FeaturedProducts(context),
+            Padding(
+              padding: const EdgeInsets.only(left: 15,right: 15,top: 20,bottom: 10),
+              child: Container(
+                height: 150,
+                width: MediaQuery.of(context).size.width,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  color: ThemeColor,
+                ),
+                child: Row(
+                  children: [
+                    Image.asset("assets/images/PersonIcon.png",height: 100,),
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Text("Good morning",style: Whitebackgroundstyle,),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 10),
+                          child: RoundedBlueContainer(width: 120),
+                        ),
+                      ],
+                    )
+                  ],
+                ),
+              ),
+            ),
+            HomeHeadline(Heading: "All Inclusive Categories for Every LifeStyle 😎",mtop: 10),
+
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 5),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  SizedBox(
-                    height: 180,
-                    width: 180,
-        
-                    child: ClipRRect(
-                        borderRadius: BorderRadius.circular(15),
-                        child: Image.asset("assets/images/HomeScreen/Tresme.png",fit: BoxFit.fill,)),
-                  ),
-                  SizedBox(
-                    height: 180,
-                    width:180,
-        
-                    child: ClipRRect(
-                        borderRadius: BorderRadius.circular(15),
-                        child: Image.asset("assets/images/HomeScreen/Tresme.png",fit: BoxFit.fill,)),
-                  )
+                MIcon(),
+                  MIcon(),
+                  MIcon(),
+                  MIcon()
+
                 ],
               ),
             ),
-            
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 5),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  MIcon(),
+                  MIcon(),
+                  MIcon(),
+                  MIcon()
+
+                ],
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 5),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  MIcon(),
+                  MIcon(),
+                  MIcon(),
+                  MIcon()
+
+                ],
+              ),
+            ),
+            HomeHeadline(Heading: "Quick Links",mtop: 30,mbottom: 10),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 2.5),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                 
+                 QuickLinks(title: "Loyalty Program"),
+                  QuickLinks(title: "Outlets Location"),
+                ],
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 2.5),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+
+                  QuickLinks(title: "Authenticity"),
+                  QuickLinks(title: "Shipping & Delivery"),
+                ],
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 2.5),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+
+                  QuickLinks(title: "Join our team"),
+                  QuickLinks(title: "Terms & Conditions"),
+                ],
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 10),
+              child: HomeLastContainer(context, mTitle: "Clearance Sale", mSubtitle: "Last call for clearance. Grab it before it's gone"),
+            ),
+            HomeLastContainer(context, mTitle: "1000+ Brands", mSubtitle: "All the brands you love in one place"),
+            HomeLastContainer(context, mTitle: "Shajgoj Outlets", mSubtitle: "Locate your nearest Shajgoj outlet"),
+
           ],
         ),
       ),
     );
   }
-  Widget CrousalSliderWidget(){
-    return Column(children: [
-      CarouselSlider(
-        options: CarouselOptions(
-            height: 240.0,
-            aspectRatio: 2,
-            autoPlay: true,
-            //enlargeFactor: 0.3,
-            // autoPlayCurve: Curves.fastOutSlowIn,
-            //enlargeCenterPage: true,
-            onPageChanged: (index, reason) {
-              setState(() {
-                currentindex = index;
-              });
-            }),
-        items: CrousalSlider.map((i) {
-          return Builder(
-            builder: (BuildContext context) {
-              return Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 5),
-                child: ClipRRect(
-                    borderRadius: BorderRadius.circular(15),
-                    child: Container(
-                      width: double.infinity,
-                      child: Image.asset(i,
-                        height: 150,fit: BoxFit.cover,
-                      ),
-                    )),
-              );
-            },
-          );
-        }).toList(),
-      ),
-      AnimatedContainer(
-          duration: Duration(milliseconds: 300),
-          height: 10,
-          width: 20,
-          child: Center(
-            child: SmoothPageIndicator(
-              controller: PageController(initialPage: currentindex),
-              count: CrousalSlider.length,
-              effect: ExpandingDotsEffect(
-                dotHeight: 5,
-                dotWidth: 5,
-                activeDotColor: Colors.blue,
-                dotColor: Colors.grey.shade400,
-              ),
-            ),
-          )),
-      
 
-    ],);
+  Widget CrousalSliderWidget() {
+    return Column(
+      children: [
+        CarouselSlider(
+          options: CarouselOptions(
+              height: 240.0,
+              aspectRatio: 2,
+              autoPlay: true,
+              //enlargeFactor: 0.3,
+              // autoPlayCurve: Curves.fastOutSlowIn,
+              //enlargeCenterPage: true,
+              onPageChanged: (index, reason) {
+                setState(() {
+                  currentindex = index;
+                });
+              }),
+          items: CrousalSlider.map((i) {
+            return Builder(
+              builder: (BuildContext context) {
+                return Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 5),
+                  child: ClipRRect(
+                      borderRadius: BorderRadius.circular(15),
+                      child: Container(
+                        width: double.infinity,
+                        child: Image.asset(
+                          i,
+                          height: 150,
+                          fit: BoxFit.cover,
+                        ),
+                      )),
+                );
+              },
+            );
+          }).toList(),
+        ),
+        AnimatedContainer(
+            duration: Duration(milliseconds: 300),
+            height: 10,
+            width: 20,
+            child: Center(
+              child: SmoothPageIndicator(
+                controller: PageController(initialPage: currentindex),
+                count: CrousalSlider.length,
+                effect: ExpandingDotsEffect(
+                  dotHeight: 5,
+                  dotWidth: 5,
+                  activeDotColor: Colors.blue,
+                  dotColor: Colors.grey.shade400,
+                ),
+              ),
+            )),
+      ],
+    );
   }
 }
 

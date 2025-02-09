@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shopifyclone/UI/HomeScreen.dart';
+import 'package:shopifyclone/UI/SplashScreen.dart';
 import 'package:shopifyclone/Utilities/BottomNavigation.dart';
 
 void main() {
@@ -20,7 +21,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: BottomNavigation(),
+      home: Splashscreen(),
     );
   }
 

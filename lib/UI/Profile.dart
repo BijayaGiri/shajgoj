@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:shopifyclone/CommonWidgets/Widegts.dart';
 import 'package:shopifyclone/TextStyles/TextStyles.dart';
+import 'package:shopifyclone/Widgets/Home/HomeWidgets.dart';
 class Profile extends StatefulWidget {
   const Profile({super.key});
 
@@ -32,7 +33,7 @@ class _ProfileState extends State<Profile> {
                   height: 235,
                   width: MediaQuery.of(context).size.width,
                   decoration: BoxDecoration(
-                    color: Colors.black
+                    color: ThemeColor
                   ),
                   child: Row(
                     children: [
@@ -49,15 +50,7 @@ class _ProfileState extends State<Profile> {
                             padding: const EdgeInsets.only(bottom: 5),
                             child: Text("886635807896",style: Whitebackgroundstyle.copyWith(fontSize: 18),),
                           ),
-                          Container(
-                            height: 30,
-                            width: 150,
-                            decoration: BoxDecoration(
-                              color: Color(0xffc56cc6),
-                              borderRadius: BorderRadius.circular(15)
-                            ),
-                            child: Center(child: Text("0.00 Points",style: Whitebackgroundstyle.copyWith(color: Colors.black),)),
-                          )
+                          RoundedBlueContainer(),
                         ],
                       )
                     ],
