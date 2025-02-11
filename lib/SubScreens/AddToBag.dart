@@ -86,7 +86,7 @@ appBar: AppBar(
                           padding: const EdgeInsets.symmetric(horizontal: 15),
                           child: Text("Tresme Soft Light Moisturising Cream 50.0ml",style: BottomNavigationstyle.copyWith(fontSize: 13),),
                         )),
-                        Image.asset("assets/images/AddToCart/Cross.png",height: 20,)
+                        Image.asset("assets/images/AddToCart/Cross.png",height: 20,color: Colors.grey,)
                       ],
                     ),
                   ),

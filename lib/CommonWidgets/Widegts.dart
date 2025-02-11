@@ -13,7 +13,7 @@ BagController _bagController=Get.put(BagController());
   Widget ComAppbar(BuildContext context){
     return Row(
       children: [
-        Text("SHAJGOJ",style: Headline),
+        Text("Ithari Medical",style: Headline),
         Spacer(),
         Expanded(
           child: Row(

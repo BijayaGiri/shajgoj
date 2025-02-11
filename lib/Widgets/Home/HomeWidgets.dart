@@ -1,8 +1,20 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:shopifyclone/SubScreens/Address.dart';
+import 'package:shopifyclone/SubScreens/LoginScreen.dart';
+import 'package:shopifyclone/SubScreens/LoyaltyProgram.dart';
+import 'package:shopifyclone/SubScreens/OrderScreen.dart';
+import 'package:shopifyclone/SubScreens/PrivacyPolicy.dart';
 import 'package:shopifyclone/SubScreens/ProductDiscription.dart';
+import 'package:shopifyclone/SubScreens/ReturnRefund.dart';
+import 'package:shopifyclone/SubScreens/Shipping.dart';
+import 'package:shopifyclone/SubScreens/TermsCondition.dart';
+import 'package:shopifyclone/SubScreens/Vouchers.dart';
+import 'package:shopifyclone/SubScreens/Wishlist.dart';
 import 'package:shopifyclone/TextStyles/TextStyles.dart';
+import 'package:shopifyclone/UI/Categories.dart';
+import 'package:shopifyclone/UI/Profile.dart';
 
 import '../../Utilities/Controller.dart';
 Widget HomeHeadline({required String Heading, double ?mtop,double ?mbottom,Color ?mcolor} ){
@@ -33,30 +45,35 @@ Widget QuickLinks({required String title}){
         child: Text("$title",style: Whitebackgroundstyle.copyWith(color: Colors.black.withAlpha(200)),)),
   );
 }
-Widget MIcon(){
-  return Container(
-    height: 100,
-    width: 90,
-    decoration: BoxDecoration(
-      color: ThemeColor,
-      borderRadius: BorderRadius.circular(15)
-    ),
-    child: Padding(
-      padding: const EdgeInsets.only(left: 10,right:10,top: 10),
-      child: Column(
-        children: [
-          Image.asset("assets/images/HomeScreen/Icons/FaceWash.png",height: 50
-            ,),
-          Padding(
-            padding: const EdgeInsets.only(top:10,bottom: 5),
-            child: Container(
-              height: 0.5,
-              width: 80,
-              color: Colors.white,
+Widget MIcon(BuildContext context){
+  return GestureDetector(
+    onTap: (){
+      Navigator.push(context, MaterialPageRoute(builder: (context)=>CategoriesScreen()));
+    },
+    child: Container(
+      height: 100,
+      width: 90,
+      decoration: BoxDecoration(
+        color: ThemeColor,
+        borderRadius: BorderRadius.circular(15)
+      ),
+      child: Padding(
+        padding: const EdgeInsets.only(left: 10,right:10,top: 10),
+        child: Column(
+          children: [
+            Image.asset("assets/images/HomeScreen/Icons/FaceWash.png",height: 50
+              ,),
+            Padding(
+              padding: const EdgeInsets.only(top:10,bottom: 5),
+              child: Container(
+                height: 0.5,
+                width: 80,
+                color: Colors.white,
+              ),
             ),
-          ),
-          Text("FaceWash",style: Whitebackgroundstyle.copyWith(fontSize: 12),)
-        ],
+            Text("FaceWash",style: Whitebackgroundstyle.copyWith(fontSize: 12),)
+          ],
+        ),
       ),
     ),
   );
@@ -290,10 +307,10 @@ Widget RoundedBlueContainer({double ?width}){
     height: 30,
     width: width??150,
     decoration: BoxDecoration(
-        color: Color(0xffc56cc6),
+        color: Colors.white,
         borderRadius: BorderRadius.circular(15)
     ),
-    child: Center(child: Text("0.00 Points",style: Whitebackgroundstyle.copyWith(color: Colors.black),)),
+    child: Center(child: Text("0.00 Points",style: Whitebackgroundstyle.copyWith(color: Colors.blue),)),
   );
 }
 Widget DealsYouCanotMiss(){
@@ -389,13 +406,13 @@ Widget mDrawer(){
                   height: 20,
                   width: 80,
                   decoration: BoxDecoration(
-                      color: Color(0xffc56cc6),
+                      color: Colors.white,
                       borderRadius: BorderRadius.circular(15)),
                   child: Center(
                       child: Text(
                         "0.00 Points",
                         style: Whitebackgroundstyle.copyWith(
-                            color: Colors.black, fontSize: 12),
+                            color: Colors.blue, fontSize: 12),
                       )),
                 ),
               )
@@ -411,9 +428,34 @@ Widget mDrawer(){
               itemBuilder: (context, index) => Padding(
                 padding:
                 const EdgeInsets.symmetric(vertical: 8, horizontal: 15),
-                child: Text(
-                  FirstList[index],
-                  style: TextStyle(color: Colors.white),
+                child: GestureDetector(
+                  onTap: (){
+                    if(index==0){
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=>Profile()));
+                    }
+                    if(index==1){
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=>LoyaltyProgramScreen()));
+                    }
+                    if(index==2){
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=>Vouchers()));
+                    }
+                    if(index==3){
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=>WishListScreen()));
+                    }
+                    if(index==4){
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=>Orderscreen()));
+                    }
+                    if(index==5){
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=>AddressScreen()));
+                    }
+                    if(index==6){
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=>Profile()));
+                    }
+                  },
+                  child: Text(
+                    FirstList[index],
+                    style: TextStyle(color: Colors.white),
+                  ),
                 ),
               ),
             ),
@@ -429,9 +471,28 @@ Widget mDrawer(){
               itemBuilder: (context, index) => Padding(
                 padding:
                 const EdgeInsets.symmetric(vertical: 8, horizontal: 15),
-                child: Text(
-                  SecondList[index],
-                  style: TextStyle(color: Colors.white),
+                child: GestureDetector(
+                  onTap: (){
+                    if(index==0){
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=>TermsCondition()));
+                    }
+                    if(index==1){
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=>ReturnRefund()));
+                    }
+                    if(index==2){
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=>PrivacyPolicy()));
+                    }
+                    if(index==3){
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=>ShippingDelivery()));
+                    }
+                    if(index==4){
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=>Loginscreen()));
+                    }
+                  },
+                  child: Text(
+                    SecondList[index],
+                    style: TextStyle(color: Colors.white),
+                  ),
                 ),
               ),
             ),

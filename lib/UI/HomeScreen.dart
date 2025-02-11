@@ -36,25 +36,47 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Column(
           children: [
             CrousalSliderWidget(),
+            // Padding(
+            //   padding: const EdgeInsets.only(top: 15),
+            //   child: Text(
+            //     "Unbeatable 🔥 beauty deals",
+            //     style: Whitebackgroundstyle.copyWith(color: Colors.black),
+            //   ),
+            // ),
+           Padding(
+             padding: const EdgeInsets.only(top: 25,left: 10,right: 10),
+             child: Row(
+               mainAxisAlignment: MainAxisAlignment.spaceBetween,
+               children: [
+                 MIcon(context),
+                 MIcon(context), MIcon(context), MIcon(context),
+               ],
+             ),
+           ),
             Padding(
-              padding: const EdgeInsets.only(top: 15),
-              child: Text(
-                "Unbeatable 🔥 beauty deals",
-                style: Whitebackgroundstyle.copyWith(color: Colors.black),
+              padding: const EdgeInsets.only(top: 5,left: 10,right: 10),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  MIcon(context),
+                  MIcon(context),
+                  MIcon(context),
+                  MIcon(context),
+                ],
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: SizedBox(
-                  height: 80,
-                  width: MediaQuery.of(context).size.width,
-                  child: ClipRRect(
-                      borderRadius: BorderRadius.circular(15),
-                      child: Image.asset(
-                        "assets/images/HomeScreen/WinterBanner.png",
-                        fit: BoxFit.fill,
-                      ))),
-            ),
+            // Padding(
+            //   padding: const EdgeInsets.symmetric(horizontal: 20),
+            //   child: SizedBox(
+            //       height: 80,
+            //       width: MediaQuery.of(context).size.width,
+            //       child: ClipRRect(
+            //           borderRadius: BorderRadius.circular(15),
+            //           child: Image.asset(
+            //             "assets/images/HomeScreen/WinterBanner.png",
+            //             fit: BoxFit.fill,
+            //           ))),
+            // ),
             Padding(
               padding: const EdgeInsets.only(top: 20),
               child: Text("💄 Categories",
@@ -110,10 +132,10 @@ FeaturedProducts(context),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                MIcon(),
-                  MIcon(),
-                  MIcon(),
-                  MIcon()
+                  MIcon(context),
+                  MIcon(context),
+                  MIcon(context),
+                  MIcon(context),
 
                 ],
               ),
@@ -123,10 +145,10 @@ FeaturedProducts(context),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  MIcon(),
-                  MIcon(),
-                  MIcon(),
-                  MIcon()
+                  MIcon(context),
+                  MIcon(context),
+                  MIcon(context),
+                  MIcon(context),
 
                 ],
               ),
@@ -136,10 +158,10 @@ FeaturedProducts(context),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  MIcon(),
-                  MIcon(),
-                  MIcon(),
-                  MIcon()
+                  MIcon(context),
+                  MIcon(context),
+                  MIcon(context),
+                  MIcon(context),
 
                 ],
               ),
@@ -183,7 +205,7 @@ FeaturedProducts(context),
               child: HomeLastContainer(context, mTitle: "Clearance Sale", mSubtitle: "Last call for clearance. Grab it before it's gone"),
             ),
             HomeLastContainer(context, mTitle: "1000+ Brands", mSubtitle: "All the brands you love in one place"),
-            HomeLastContainer(context, mTitle: "Shajgoj Outlets", mSubtitle: "Locate your nearest Shajgoj outlet"),
+            HomeLastContainer(context, mTitle: "Ithari Medical Outlets", mSubtitle: "Locate your nearest Ithari outlet"),
 
           ],
         ),

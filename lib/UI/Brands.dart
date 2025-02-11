@@ -77,7 +77,7 @@ class _BrandsScreenState extends State<BrandsScreen> {
             ),
             Padding(
               padding: const EdgeInsets.only(top: 10),
-              child: HomeLastContainer(context, mTitle: "Shajgoj Outlets ", mSubtitle: "Locate Your nearest Shajgoj Outlet"),
+              child: HomeLastContainer(context, mTitle: "Ithari Medical Outlets ", mSubtitle: "Locate Your nearest Ithari Outlet"),
             ),
 
           ],

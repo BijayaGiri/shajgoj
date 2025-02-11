@@ -24,8 +24,8 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SkinCare(mtitle: "Skin Care",msubtitle:"Glow with Our\nWide Skin Care Range",mtop: 50 ),
-            SkinCare(mtitle: "Hair Care",msubtitle:"Hair Solutions\nfor Every Hair Need",mtop: 50 ),
+            SkinCare(context,mtitle: "Skin Care",msubtitle:"Glow with Our\nWide Skin Care Range",mtop: 50, ),
+            SkinCare(context,mtitle: "Hair Care",msubtitle:"Hair Solutions\nfor Every Hair Need",mtop: 50 ,),
             Padding(
               padding: const EdgeInsets.only(left: 15,bottom: 10),
               child: Center(child: HomeHeadline(Heading: "Quick Links")),
@@ -73,7 +73,7 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
             ),
             Padding(
               padding: const EdgeInsets.only(top: 10),
-              child: HomeLastContainer(context, mTitle: "Shajgoj Outlets ", mSubtitle: "Locate Your nearest Shajgoj Outlet"),
+              child: HomeLastContainer(context, mTitle: "Ithari Medical Outlets ", mSubtitle: "Locate Your nearest Ithari Medical Outlet"),
             ),
           ],
         ),

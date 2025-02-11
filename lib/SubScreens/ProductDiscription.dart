@@ -227,9 +227,7 @@ _bagController.SetBag();
                             SizedBox(
                                 width: 150,
                                 child: Text("Product Name",style: Whitebackgroundstyle.copyWith(color: Colors.black.withAlpha(150),fontWeight: FontWeight.normal),)),
-                            Expanded(
-                              flex: 1,
-                                child: Text("Tresme Soft Light Moisturising Cream 50.0 ml",style:Whitebackgroundstyle.copyWith(color: Colors.black.withAlpha(180),fontSize: 13),textAlign: TextAlign.start,))
+                            Expanded(child: Text("Tresme Soft Light Moisturising Cream 50.0 ml",style:Whitebackgroundstyle.copyWith(color: Colors.black.withAlpha(180),fontSize: 13),textAlign: TextAlign.start,))
                           ],
                         ),
                         Padding(
@@ -242,9 +240,7 @@ _bagController.SetBag();
                               SizedBox(
                                   width: 150,
                                   child: Text("Brand Name",style: Whitebackgroundstyle.copyWith(color: Colors.black.withAlpha(150),fontWeight: FontWeight.normal),)),
-                              Expanded(
-                                flex: 1,
-                                  child: Text("Tresme",style:Whitebackgroundstyle.copyWith(color: ThemeColor,fontSize: 13),textAlign: TextAlign.start,))
+                              Text("Tresme",style:Whitebackgroundstyle.copyWith(color: ThemeColor,fontSize: 13),textAlign: TextAlign.start,)
                             ],
                           ),
                         ),
@@ -259,8 +255,7 @@ _bagController.SetBag();
                                   width:150,
                                   child: Text("Size",style: Whitebackgroundstyle.copyWith(color: Colors.black.withAlpha(150),fontWeight: FontWeight.normal),)),
 
-                              Expanded(
-                                  child: Text("50 ml",style:Whitebackgroundstyle.copyWith(color: Colors.black,fontSize: 13),textAlign: TextAlign.start,))
+                              Text("50 ml",style:Whitebackgroundstyle.copyWith(color: Colors.black,fontSize: 13),textAlign: TextAlign.start,)
                             ],
                           ),
                         ),

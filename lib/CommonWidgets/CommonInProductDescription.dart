@@ -14,7 +14,8 @@ Widget LastContainer(BuildContext context,{required List<String> Items}){
               color: Colors.grey.shade300
           )
       ),
-      child: Expanded(
+      child: Container(
+        height: double.infinity,
         child: ListView.builder(
           physics: NeverScrollableScrollPhysics(),
           itemCount:Items.length,itemBuilder: (context,index)=>Column(
@@ -30,7 +31,7 @@ Widget LastContainer(BuildContext context,{required List<String> Items}){
                   Text(Items[index],style: Whitebackgroundstyle.copyWith(color: Colors.black.withAlpha(150)),),
                   Spacer(),
                   Icon(Icons.arrow_forward_ios),
-        
+
                 ],
               ),
             ),

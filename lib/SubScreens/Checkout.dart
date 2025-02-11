@@ -396,15 +396,16 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
       ),
     );
   }
-  TextStyle CheckoutStyle=TextStyle(
+
+}
+TextStyle CheckoutStyle=TextStyle(
     fontWeight: FontWeight.w900,
     fontSize: 15,
-color: Colors.black.withAlpha(180)
+    color: Colors.black.withAlpha(180)
+);
+Widget CheckoutHeadline({required String mtitle}){
+  return Padding(
+    padding: const EdgeInsets.only(top: 15,left: 10),
+    child: Text("$mtitle",style:CheckoutStyle ),
   );
-  Widget CheckoutHeadline({required String mtitle}){
-    return Padding(
-      padding: const EdgeInsets.only(top: 15,left: 10),
-      child: Text("$mtitle",style:CheckoutStyle ),
-    );
-  }
 }

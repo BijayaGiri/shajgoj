@@ -3,7 +3,7 @@ import'package:flutter/material.dart';
 import 'package:shopifyclone/TextStyles/TextStyles.dart';
 import 'package:shopifyclone/Widgets/Home/HomeWidgets.dart';
 
-Widget SkinCare({required String mtitle,required String msubtitle,double ?mtop}){
+Widget SkinCare(BuildContext context,{required String mtitle,required String msubtitle,double ?mtop}){
   return Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
@@ -22,10 +22,10 @@ Widget SkinCare({required String mtitle,required String msubtitle,double ?mtop})
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            MIcon(),
-            MIcon(),
-            MIcon(),
-            MIcon(),
+            MIcon(context),
+            MIcon(context),
+            MIcon(context),
+            MIcon(context),
           ],
         ),
       ),
@@ -34,10 +34,10 @@ Widget SkinCare({required String mtitle,required String msubtitle,double ?mtop})
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            MIcon(),
-            MIcon(),
-            MIcon(),
-            MIcon(),
+            MIcon(context),
+            MIcon(context),
+            MIcon(context),
+            MIcon(context),
           ],
         ),
       ),
@@ -46,10 +46,10 @@ Widget SkinCare({required String mtitle,required String msubtitle,double ?mtop})
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            MIcon(),
-            MIcon(),
-            MIcon(),
-            MIcon(),
+            MIcon(context),
+            MIcon(context),
+            MIcon(context),
+            MIcon(context),
           ],
         ),
       ),
