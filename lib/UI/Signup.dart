@@ -15,6 +15,7 @@ class SignupScreen extends StatefulWidget {
 }
 
 class _SignupScreenState extends State<SignupScreen> {
+  final _formkey=GlobalKey<FormState>();
   BagController bottoncontroller = Get.put(BagController());
   TextEditingController phonecontroller = TextEditingController();
   TextEditingController passwordcontroller = TextEditingController();
@@ -52,181 +53,244 @@ class _SignupScreenState extends State<SignupScreen> {
                 ),
               ),
               Text("by creating a free account"),
-              Padding(
-                padding: const EdgeInsets.only(left: 30, right: 30, top: 30),
-                child: TextFormField(
-                  controller: FullNameController,
-                  decoration: InputDecoration(
-                    hintText: "Full Name",
-                    suffixIcon: Icon(
-                      Icons.person,
-                      color: Colors.grey.shade400,
-                    ),
-                    hintStyle: TextStyle(
-                        color: Colors.black.withAlpha(100),
-                        fontWeight: FontWeight.w500),
-                    fillColor: Colors.grey.shade200,
-                    filled: true,
-                    focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.grey.shade200),
-                      borderRadius: BorderRadius.circular(15),
-                    ),
-                    enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.grey.shade200),
-                      borderRadius: BorderRadius.circular(15),
-                    ),
-                    disabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.grey.shade200),
-                      borderRadius: BorderRadius.circular(15),
-                    ),
-                    errorBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.grey.shade200),
-                      borderRadius: BorderRadius.circular(15),
-                    ),
-                  ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 30, right: 30, top: 10),
-                child: TextFormField(
-                  controller: EmailController,
-                  decoration: InputDecoration(
-                    hintText: "Valid email",
-                    suffixIcon: Icon(
-                      Icons.mail_outline,
-                      color: Colors.grey.shade400,
-                    ),
-                    hintStyle: TextStyle(
-                        color: Colors.black.withAlpha(100),
-                        fontWeight: FontWeight.w500),
-                    fillColor: Colors.grey.shade200,
-                    filled: true,
-                    focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.grey.shade200),
-                      borderRadius: BorderRadius.circular(15),
-                    ),
-                    enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.grey.shade200),
-                      borderRadius: BorderRadius.circular(15),
-                    ),
-                    disabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.grey.shade200),
-                      borderRadius: BorderRadius.circular(15),
-                    ),
-                    errorBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.grey.shade200),
-                      borderRadius: BorderRadius.circular(15),
-                    ),
-                  ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 30, right: 30, top: 10),
-                child: TextFormField(
-                  controller: phonecontroller,
-                  decoration: InputDecoration(
-                    hintText: "Phone number",
-                    suffixIcon: Icon(
-                      Icons.phone_android,
-                      color: Colors.grey.shade400,
-                    ),
-                    hintStyle: TextStyle(
-                        color: Colors.black.withAlpha(100),
-                        fontWeight: FontWeight.w500),
-                    fillColor: Colors.grey.shade200,
-                    filled: true,
-                    focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.grey.shade200),
-                      borderRadius: BorderRadius.circular(15),
-                    ),
-                    enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.grey.shade200),
-                      borderRadius: BorderRadius.circular(15),
-                    ),
-                    disabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.grey.shade200),
-                      borderRadius: BorderRadius.circular(15),
-                    ),
-                    errorBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.grey.shade200),
-                      borderRadius: BorderRadius.circular(15),
-                    ),
-                  ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 30, right: 30, top: 10),
-                child: TextFormField(
-                  controller: passwordcontroller,
-                  decoration: InputDecoration(
-                    hintText: "Strong Password",
-                    suffixIcon: Icon(
-                      Icons.call,
-                      color: Colors.grey.shade400,
-                    ),
-                    hintStyle: TextStyle(
-                        color: Colors.black.withAlpha(100),
-                        fontWeight: FontWeight.w500),
-                    fillColor: Colors.grey.shade200,
-                    filled: true,
-                    focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.grey.shade200),
-                      borderRadius: BorderRadius.circular(15),
-                    ),
-                    enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.grey.shade200),
-                      borderRadius: BorderRadius.circular(15),
-                    ),
-                    disabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.grey.shade200),
-                      borderRadius: BorderRadius.circular(15),
-                    ),
-                    errorBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.grey.shade200),
-                      borderRadius: BorderRadius.circular(15),
-                    ),
-                  ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 30, top: 15, right: 30),
-                child: Row(
-                  children: [
-                    Obx(() {
-                      return GestureDetector(
-                          onTap: bottoncontroller.checkbox.value?bottoncontroller.unsetcheckbox:bottoncontroller.setcheckbox,
-                          child: Icon(bottoncontroller.checkbox.value?Icons.check_box_outlined:Icons.check_box_outline_blank,size: 18,)
-                      );
-                    }),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 5),
-                      child: Text(
-                        "By checking this box you agree to our",
-                        style: TextStyle(fontSize: 12),
-                      ),
-                    ),
-                    Text(
-                      " Terms",
-                      style: TextStyle(color: ThemeColor, fontSize: 12),
-                    ),
-                    Text(
-                      " and ",
-                      style: TextStyle(fontSize: 12),
-                    ),
-                    Text(
-                      "Conditions",
-                      style: TextStyle(color: ThemeColor, fontSize: 12),
-                    )
-                  ],
-                ),
-              ),
+             Form(
+               key: _formkey,
+               child: Column(
+                 children: [
+                   Padding(
+                     padding: const EdgeInsets.only(left: 30, right: 30, top: 30),
+                     child: TextFormField(
+                       controller: FullNameController,
+                       validator: (value){
+                         if(value?.isEmpty ?? true){
+                           return "Enter Full Name";
+                         }
+                         return null;
+                       } ,
+
+                       decoration: InputDecoration(
+                         hintText: "Full Name",
+                         suffixIcon: Icon(
+                           Icons.person,
+                           color: Colors.grey.shade400,
+                         ),
+                         hintStyle: TextStyle(
+                             color: Colors.black.withAlpha(100),
+                             fontWeight: FontWeight.w500),
+                         fillColor: Colors.grey.shade200,
+                         filled: true,
+                         focusedBorder: OutlineInputBorder(
+                           borderSide: BorderSide(color: Colors.grey.shade200),
+                           borderRadius: BorderRadius.circular(15),
+                         ),
+                         enabledBorder: OutlineInputBorder(
+                           borderSide: BorderSide(color: Colors.grey.shade200),
+                           borderRadius: BorderRadius.circular(15),
+                         ),
+                         disabledBorder: OutlineInputBorder(
+                           borderSide: BorderSide(color: Colors.grey.shade200),
+                           borderRadius: BorderRadius.circular(15),
+                         ),
+                         errorBorder: OutlineInputBorder(
+                           borderSide: BorderSide(color: Colors.grey.shade200),
+                           borderRadius: BorderRadius.circular(15),
+                         ),
+                         focusedErrorBorder:OutlineInputBorder(
+                           borderSide: BorderSide(
+                               color: Colors.grey.shade200
+                           ),
+                           borderRadius: BorderRadius.circular(15),
+
+                         ) ,
+                       ),
+                     ),
+                   ),
+                   Padding(
+                     padding: const EdgeInsets.only(left: 30, right: 30, top: 10),
+                     child: TextFormField(
+                       validator: (value){
+                         if(value?.isEmpty ?? true){
+                           return "Enter email";
+                         }
+                         return null;
+                       } ,
+                       controller: EmailController,
+                       decoration: InputDecoration(
+                         hintText: "Valid email",
+                         suffixIcon: Icon(
+                           Icons.mail_outline,
+                           color: Colors.grey.shade400,
+                         ),
+                         hintStyle: TextStyle(
+                             color: Colors.black.withAlpha(100),
+                             fontWeight: FontWeight.w500),
+                         fillColor: Colors.grey.shade200,
+                         filled: true,
+                         focusedBorder: OutlineInputBorder(
+                           borderSide: BorderSide(color: Colors.grey.shade200),
+                           borderRadius: BorderRadius.circular(15),
+                         ),
+                         enabledBorder: OutlineInputBorder(
+                           borderSide: BorderSide(color: Colors.grey.shade200),
+                           borderRadius: BorderRadius.circular(15),
+                         ),
+                         focusedErrorBorder:OutlineInputBorder(
+                           borderSide: BorderSide(
+                               color: Colors.grey.shade200
+                           ),
+                           borderRadius: BorderRadius.circular(15),
+
+                         ) ,
+                         disabledBorder: OutlineInputBorder(
+                           borderSide: BorderSide(color: Colors.grey.shade200),
+                           borderRadius: BorderRadius.circular(15),
+                         ),
+                         errorBorder: OutlineInputBorder(
+                           borderSide: BorderSide(color: Colors.grey.shade200),
+                           borderRadius: BorderRadius.circular(15),
+                         ),
+                       ),
+                     ),
+                   ),
+                   Padding(
+                     padding: const EdgeInsets.only(left: 30, right: 30, top: 10),
+                     child: TextFormField(
+                       validator: (value){
+                         if(value?.isEmpty ?? true){
+                           return "Enter Phone number";
+                         }
+                         return null;
+                       } ,
+                       controller: phonecontroller,
+                       decoration: InputDecoration(
+                         hintText: "Phone number",
+                         suffixIcon: Icon(
+                           Icons.phone_android,
+                           color: Colors.grey.shade400,
+                         ),
+                         hintStyle: TextStyle(
+                             color: Colors.black.withAlpha(100),
+                             fontWeight: FontWeight.w500),
+                         fillColor: Colors.grey.shade200,
+                         filled: true,
+                         focusedErrorBorder:OutlineInputBorder(
+                           borderSide: BorderSide(
+                               color: Colors.grey.shade200
+                           ),
+                           borderRadius: BorderRadius.circular(15),
+
+                         ) ,
+                         focusedBorder: OutlineInputBorder(
+                           borderSide: BorderSide(color: Colors.grey.shade200),
+                           borderRadius: BorderRadius.circular(15),
+                         ),
+                         enabledBorder: OutlineInputBorder(
+                           borderSide: BorderSide(color: Colors.grey.shade200),
+                           borderRadius: BorderRadius.circular(15),
+                         ),
+                         disabledBorder: OutlineInputBorder(
+                           borderSide: BorderSide(color: Colors.grey.shade200),
+                           borderRadius: BorderRadius.circular(15),
+                         ),
+                         errorBorder: OutlineInputBorder(
+                           borderSide: BorderSide(color: Colors.grey.shade200),
+                           borderRadius: BorderRadius.circular(15),
+                         ),
+                       ),
+                     ),
+                   ),
+                   Padding(
+                     padding: const EdgeInsets.only(left: 30, right: 30, top: 10),
+                     child: TextFormField(
+                       validator: (value){
+                         if(value?.isEmpty ?? true){
+                           return " Enter password";
+                         }
+                         return null;
+                       } ,
+
+                       controller: passwordcontroller,
+                       decoration: InputDecoration(
+                         focusedErrorBorder:OutlineInputBorder(
+                           borderSide: BorderSide(
+                               color: Colors.grey.shade200
+                           ),
+                           borderRadius: BorderRadius.circular(15),
+
+                         ) ,
+                         hintText: "Strong Password",
+                         suffixIcon: Icon(
+                           Icons.call,
+                           color: Colors.grey.shade400,
+                         ),
+                         hintStyle: TextStyle(
+                             color: Colors.black.withAlpha(100),
+                             fontWeight: FontWeight.w500),
+                         fillColor: Colors.grey.shade200,
+                         filled: true,
+                         focusedBorder: OutlineInputBorder(
+                           borderSide: BorderSide(color: Colors.grey.shade200),
+                           borderRadius: BorderRadius.circular(15),
+                         ),
+                         enabledBorder: OutlineInputBorder(
+                           borderSide: BorderSide(color: Colors.grey.shade200),
+                           borderRadius: BorderRadius.circular(15),
+                         ),
+                         disabledBorder: OutlineInputBorder(
+                           borderSide: BorderSide(color: Colors.grey.shade200),
+                           borderRadius: BorderRadius.circular(15),
+                         ),
+                         errorBorder: OutlineInputBorder(
+                           borderSide: BorderSide(color: Colors.grey.shade200),
+                           borderRadius: BorderRadius.circular(15),
+                         ),
+                       ),
+                     ),
+                   ),
+                   Padding(
+                     padding: const EdgeInsets.only(left: 30, top: 15, right: 30),
+                     child: Row(
+                       children: [
+                         Obx(() {
+                           return GestureDetector(
+                               onTap: bottoncontroller.checkbox.value?bottoncontroller.unsetcheckbox:bottoncontroller.setcheckbox,
+                               child: Icon(bottoncontroller.checkbox.value?Icons.check_box_outlined:Icons.check_box_outline_blank,size: 18,)
+                           );
+                         }),
+                         Padding(
+                           padding: const EdgeInsets.only(left: 5),
+                           child: Text(
+                             "By checking this box you agree to our",
+                             style: TextStyle(fontSize: 12),
+                           ),
+                         ),
+                         Text(
+                           " Terms",
+                           style: TextStyle(color: ThemeColor, fontSize: 12),
+                         ),
+                         Text(
+                           " and ",
+                           style: TextStyle(fontSize: 12),
+                         ),
+                         Text(
+                           "Conditions",
+                           style: TextStyle(color: ThemeColor, fontSize: 12),
+                         )
+                       ],
+                     ),
+                   ),
+                 ],
+               ),
+             ),
               Padding(
                 padding: const EdgeInsets.only(left: 30, right: 30, top: 70),
                 child: Column(
                   children: [
                     GestureDetector(
                       onTap: (){
-                        Navigator.push(context, MaterialPageRoute(builder:(context)=>OTPScreen() ));
+                       if(_formkey.currentState!.validate()){
+                         Navigator.push(context, MaterialPageRoute(builder:(context)=>OTPScreen() ));
+                       }
                       },
                       child: Container(
                         height: 60,

@@ -13,6 +13,7 @@ class Loginscreen extends StatefulWidget {
 }
 
 class _LoginscreenState extends State<Loginscreen> {
+  final _formkey=GlobalKey<FormState>();
   BagController bottoncontroller=Get.put(BagController());
   TextEditingController phonecontroller=TextEditingController();
   TextEditingController passwordcontroller=TextEditingController();
@@ -41,92 +42,125 @@ class _LoginscreenState extends State<Loginscreen> {
                 child: Text("Welcome back",style: Whitebackgroundstyle.copyWith(color: ThemeColor,fontSize: 35,fontWeight: FontWeight.w800),),
               ),
               Text("signin to access your account"),
-              Padding(
-                padding: const EdgeInsets.only(left: 30,right: 30,top: 30),
-                child: TextFormField(
-                  controller: phonecontroller,
-                  decoration: InputDecoration(
-                    hintText: "Enter your phone number",
-                    suffixIcon: Icon(Icons.call,color: Colors.grey.shade400,),
-                    hintStyle: TextStyle(
-                        color: Colors.black.withAlpha(100),
-                        fontWeight: FontWeight.w500
-                    ),
-                    fillColor: Colors.grey.shade200,
-                    filled: true,
-                    focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
-                          color: Colors.grey.shade200
-                      ),
-                      borderRadius: BorderRadius.circular(15),
+              Form(
+                key: _formkey,
+                child: Column(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(left: 30,right: 30,top: 30),
+                      child: TextFormField(
+                        validator: (value){
+                          if(value?.isEmpty ?? true){
+                            return "Enter Phone number";
+                          }
+                          return null;
+                        },
+                        controller: phonecontroller,
+                        decoration: InputDecoration(
+                          hintText: "Enter your phone number",
+                          suffixIcon: Icon(Icons.call,color: Colors.grey.shade400,),
+                          hintStyle: TextStyle(
+                              color: Colors.black.withAlpha(100),
+                              fontWeight: FontWeight.w500
+                          ),
+                          fillColor: Colors.grey.shade200,
+                          filled: true,
+                          focusedBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                                color: Colors.grey.shade200
+                            ),
+                            borderRadius: BorderRadius.circular(15),
 
-                    ),
-                    enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
-                          color: Colors.grey.shade200
-                      ),
-                      borderRadius: BorderRadius.circular(15),
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                                color: Colors.grey.shade200
+                            ),
+                            borderRadius: BorderRadius.circular(15),
 
-                    ),
-                    disabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
-                          color: Colors.grey.shade200
-                      ),
-                      borderRadius: BorderRadius.circular(15),
+                          ),
+                          disabledBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                                color: Colors.grey.shade200
+                            ),
+                            borderRadius: BorderRadius.circular(15),
 
-                    ),
-                    errorBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
-                          color: Colors.grey.shade200
-                      ),
-                      borderRadius: BorderRadius.circular(15),
+                          ),
+                          errorBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                                color: Colors.grey.shade200
+                            ),
+                            borderRadius: BorderRadius.circular(15),
 
-                    ),
-                  ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 30,right: 30,top: 30),
-                child: TextFormField(
-                  controller: passwordcontroller,
-                  decoration: InputDecoration(
-                    hintText: "Password",
-                    suffixIcon: Icon(Icons.lock,color: Colors.grey.shade400,),
-                    hintStyle: TextStyle(
-                        color: Colors.black.withAlpha(100),
-                        fontWeight: FontWeight.w500
-                    ),
-                    fillColor: Colors.grey.shade200,
-                    filled: true,
-                    focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
-                          color: Colors.grey.shade200
-                      ),
-                      borderRadius: BorderRadius.circular(15),
+                          ),
+                          focusedErrorBorder:OutlineInputBorder(
+                            borderSide: BorderSide(
+                                color: Colors.grey.shade200
+                            ),
+                            borderRadius: BorderRadius.circular(15),
 
-                    ),
-                    enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
-                          color: Colors.grey.shade200
+                          ) ,
+                        ),
                       ),
-                      borderRadius: BorderRadius.circular(15),
-
                     ),
-                    disabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
-                          color: Colors.grey.shade200
+                    Padding(
+                      padding: const EdgeInsets.only(left: 30,right: 30,top: 30),
+                      child: TextFormField(
+                        validator: (value){
+                          if(value?.isEmpty ?? true){
+                            return "Enter password";
+                          }
+                          return null;
+                        },
+                        controller: passwordcontroller,
+                        decoration: InputDecoration(
+                          hintText: "Password",
+                          suffixIcon: Icon(Icons.lock,color: Colors.grey.shade400,),
+                          hintStyle: TextStyle(
+                              color: Colors.black.withAlpha(100),
+                              fontWeight: FontWeight.w500
+                          ),
+                          fillColor: Colors.grey.shade200,
+                          filled: true,
+                          focusedErrorBorder:OutlineInputBorder(
+                            borderSide: BorderSide(
+                                color: Colors.grey.shade200
+                            ),
+                            borderRadius: BorderRadius.circular(15),
+
+                          ) ,
+                          focusedBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                                color: Colors.grey.shade200
+                            ),
+                            borderRadius: BorderRadius.circular(15),
+
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                                color: Colors.grey.shade200
+                            ),
+                            borderRadius: BorderRadius.circular(15),
+
+                          ),
+                          disabledBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                                color: Colors.grey.shade200
+                            ),
+                            borderRadius: BorderRadius.circular(15),
+
+                          ),
+                          errorBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                                color: Colors.grey.shade200
+                            ),
+                            borderRadius: BorderRadius.circular(15),
+
+                          ),
+                        ),
                       ),
-                      borderRadius: BorderRadius.circular(15),
-
                     ),
-                    errorBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
-                          color: Colors.grey.shade200
-                      ),
-                      borderRadius: BorderRadius.circular(15),
-
-                    ),
-                  ),
+                  ],
                 ),
               ),
           Padding(
@@ -150,7 +184,7 @@ class _LoginscreenState extends State<Loginscreen> {
           ),
               GestureDetector(
                 onTap: (){
-                  if(passwordcontroller.text.isNotEmpty&&phonecontroller.text.isNotEmpty)
+                  if(_formkey.currentState!.validate())
                     Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>BottomNavigation()));
                 },
                 child: Padding(

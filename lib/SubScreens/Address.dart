@@ -12,6 +12,11 @@ class AddressScreen extends StatefulWidget {
 }
 
 class _AddressScreenState extends State<AddressScreen> {
+  final _formkey=GlobalKey<FormState>();
+  TextEditingController addressnamecontroller=TextEditingController();
+  TextEditingController districtcontroller=TextEditingController();
+  TextEditingController areacontroller=TextEditingController();
+  TextEditingController addresscontroller=TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -75,7 +80,7 @@ class _AddressScreenState extends State<AddressScreen> {
           GestureDetector(
             onTap: (){
              showDialog(context: context, builder: (BuildContext context){
-               return AddressDialogue(context);
+               return AddressDialogue(context, formkey: _formkey);
              });
             },
             child: Padding(
@@ -102,7 +107,7 @@ class _AddressScreenState extends State<AddressScreen> {
     );
   }
 }
-Widget AddressDialogue(BuildContext context){
+Widget AddressDialogue(BuildContext context,{required GlobalKey<FormState> formkey}){
   return AlertDialog(
     shape: RoundedRectangleBorder(
       borderRadius: BorderRadius.circular(10),
@@ -110,12 +115,12 @@ Widget AddressDialogue(BuildContext context){
     insetPadding:EdgeInsets.symmetric(horizontal: 10) ,
     contentPadding: EdgeInsets.symmetric(horizontal: 0),
     content: Container(
+height: 180,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
         color: Colors.white,
       ),
 
-      height: 600,
       width: MediaQuery.of(context).size.width,
       child: Column(
         mainAxisSize: MainAxisSize.max,
@@ -140,208 +145,251 @@ Widget AddressDialogue(BuildContext context){
           Divider(
             color: Colors.grey.shade400,
           ),
-          Padding(
-            padding: const EdgeInsets.only(top: 10,bottom: 5,left: 15),
-            child: Text("Address Name",style: CheckoutStyle.copyWith(fontSize: 13,color: Colors.black),),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(top: 5,left: 15),
-            child: TextFormField(
-              decoration: InputDecoration(
-                hintText: "Home/office",
-                hintStyle: TextStyle(
-                    color: Colors.black.withAlpha(100),
-                    fontWeight: FontWeight.w500
-                ),
-                fillColor: Colors.grey.shade200,
-                filled: true,
-                focusedBorder: OutlineInputBorder(
-                  borderSide: BorderSide(
-                      color: Colors.grey.shade200
-                  ),
-                  borderRadius: BorderRadius.circular(15),
+         SingleChildScrollView(
+           scrollDirection: Axis.vertical,
+           child: Form(
+             key: formkey,
+             child: Column(
+               crossAxisAlignment: CrossAxisAlignment.start,
+               children: [
+                 Padding(
+                   padding: const EdgeInsets.only(top: 10,bottom: 5,left: 15),
+                   child: Text("Address Name",style: CheckoutStyle.copyWith(fontSize: 13,color: Colors.black),),
+                 ),
+                 Padding(
+                   padding: const EdgeInsets.only(top: 5,left: 15),
+                   child: TextFormField(
+                     validator: (value){
+                       if(value?.isEmpty??true){
+                         return "Enter Home";
+                       }
+                       return null;
+                     },
+                     decoration: InputDecoration(
+                       hintText: "Home/office",
+                       hintStyle: TextStyle(
+                           color: Colors.black.withAlpha(100),
+                           fontWeight: FontWeight.w500
+                       ),
+                       fillColor: Colors.grey.shade200,
+                       filled: true,
+                       focusedBorder: OutlineInputBorder(
+                         borderSide: BorderSide(
+                             color: Colors.grey.shade200
+                         ),
+                         borderRadius: BorderRadius.circular(15),
 
-                ),
-                enabledBorder: OutlineInputBorder(
-                  borderSide: BorderSide(
-                      color: Colors.grey.shade400
-                  ),
-                  borderRadius: BorderRadius.circular(15),
+                       ),
+                       enabledBorder: OutlineInputBorder(
+                         borderSide: BorderSide(
+                             color: Colors.grey.shade400
+                         ),
+                         borderRadius: BorderRadius.circular(15),
 
-                ),
-                disabledBorder: OutlineInputBorder(
-                  borderSide: BorderSide(
-                      color: Colors.grey.shade200
-                  ),
-                  borderRadius: BorderRadius.circular(15),
+                       ),
+                       disabledBorder: OutlineInputBorder(
+                         borderSide: BorderSide(
+                             color: Colors.grey.shade200
+                         ),
+                         borderRadius: BorderRadius.circular(15),
 
-                ),
-                errorBorder: OutlineInputBorder(
-                  borderSide: BorderSide(
-                      color: Colors.grey.shade200
-                  ),
-                  borderRadius: BorderRadius.circular(15),
+                       ),
+                       errorBorder: OutlineInputBorder(
+                         borderSide: BorderSide(
+                             color: Colors.grey.shade200
+                         ),
+                         borderRadius: BorderRadius.circular(15),
 
+                       ),
+                     ),
+                   ),
+                 ),
+                 Padding(
+                   padding: const EdgeInsets.only(top: 10,bottom: 5,left: 15),
+                   child: Text("District",style: CheckoutStyle.copyWith(fontSize: 13,color: Colors.black),),
+                 ),
+                 Padding(
+                   padding: const EdgeInsets.only(top: 5,left: 15,right: 15),
+                   child: TextFormField(
+                     validator: (value){
+                       if(value?.isEmpty??true){
+                         return "Enter district";
+                       }
+                       return null;
+                     },
+                     decoration: InputDecoration(
+                       hintText: "City",
+                       hintStyle: TextStyle(
+                           color: Colors.black.withAlpha(100),
+                           fontWeight: FontWeight.w500
+                       ),
+                       fillColor: Colors.grey.shade200,
+                       filled: true,
+                       focusedBorder: OutlineInputBorder(
+                         borderSide: BorderSide(
+                             color: Colors.grey.shade200
+                         ),
+                         borderRadius: BorderRadius.circular(15),
+
+                       ),
+                       enabledBorder: OutlineInputBorder(
+                         borderSide: BorderSide(
+                             color: Colors.grey.shade400
+                         ),
+                         borderRadius: BorderRadius.circular(15),
+
+                       ),
+                       disabledBorder: OutlineInputBorder(
+                         borderSide: BorderSide(
+                             color: Colors.grey.shade200
+                         ),
+                         borderRadius: BorderRadius.circular(15),
+
+                       ),
+                       errorBorder: OutlineInputBorder(
+                         borderSide: BorderSide(
+                             color: Colors.grey.shade200
+                         ),
+                         borderRadius: BorderRadius.circular(15),
+
+                       ),
+                     ),
+                   ),
+                 ),
+                 Padding(
+                   padding: const EdgeInsets.only(top: 10,bottom: 5,left: 15),
+                   child: Text("Area",style: CheckoutStyle.copyWith(fontSize: 13,color: Colors.black),),
+                 ),
+                 Padding(
+                   padding: const EdgeInsets.only(top: 5,left: 15,right: 15),
+                   child: TextFormField(
+                     validator: (value){
+                       if(value?.isEmpty??true){
+                         return "Enter Tole";
+                       }
+                       return null;
+                     },
+                     decoration: InputDecoration(
+                       hintText: "Tole",
+                       hintStyle: TextStyle(
+                           color: Colors.black.withAlpha(100),
+                           fontWeight: FontWeight.w500
+                       ),
+                       fillColor: Colors.grey.shade200,
+                       filled: true,
+                       focusedBorder: OutlineInputBorder(
+                         borderSide: BorderSide(
+                             color: Colors.grey.shade200
+                         ),
+                         borderRadius: BorderRadius.circular(15),
+
+                       ),
+                       enabledBorder: OutlineInputBorder(
+                         borderSide: BorderSide(
+                             color: Colors.grey.shade400
+                         ),
+                         borderRadius: BorderRadius.circular(15),
+
+                       ),
+                       disabledBorder: OutlineInputBorder(
+                         borderSide: BorderSide(
+                             color: Colors.grey.shade200
+                         ),
+                         borderRadius: BorderRadius.circular(15),
+
+                       ),
+                       errorBorder: OutlineInputBorder(
+                         borderSide: BorderSide(
+                             color: Colors.grey.shade200
+                         ),
+                         borderRadius: BorderRadius.circular(15),
+
+                       ),
+                     ),
+                   ),
+                 ),
+                 Padding(
+                   padding: const EdgeInsets.only(top: 10,bottom: 5,left: 15),
+                   child: Text("Address",style: CheckoutStyle.copyWith(fontSize: 13,color: Colors.black),),
+                 ),
+                 Padding(
+                   padding: const EdgeInsets.only(top: 5,left: 15,right: 15),
+                   child: TextFormField(
+                     validator: (value){
+                       if(value?.isEmpty??true){
+                         return "Enter Address";
+                       }
+                       return null;
+                     },
+                     decoration: InputDecoration(
+
+                       hintText: "Detailed Address",
+
+                       hintStyle: TextStyle(
+                           color: Colors.black.withAlpha(100),
+                           fontWeight: FontWeight.w500
+                       ),
+                       fillColor: Colors.grey.shade200,
+                       filled: true,
+                       contentPadding: EdgeInsets.symmetric(vertical: 30,horizontal: 10),
+                       focusedBorder: OutlineInputBorder(
+                         borderSide: BorderSide(
+                             color: Colors.grey.shade200
+                         ),
+                         borderRadius: BorderRadius.circular(15),
+
+                       ),
+                       enabledBorder: OutlineInputBorder(
+                         borderSide: BorderSide(
+                             color: Colors.grey.shade400
+                         ),
+                         borderRadius: BorderRadius.circular(15),
+
+                       ),
+                       disabledBorder: OutlineInputBorder(
+                         borderSide: BorderSide(
+                             color: Colors.grey.shade200
+                         ),
+                         borderRadius: BorderRadius.circular(15),
+
+                       ),
+                       errorBorder: OutlineInputBorder(
+                         borderSide: BorderSide(
+                             color: Colors.grey.shade200
+                         ),
+                         borderRadius: BorderRadius.circular(15),
+
+                       ),
+                     ),
+                   ),
+                 ),
+               ],
+             ),
+           ),
+         ),
+          GestureDetector(
+            onTap: (){
+              if(formkey.currentState!.validate()){
+
+              }
+            },
+            child: Padding(
+              padding: const EdgeInsets.only(left: 15,right: 15,top: 25),
+              child: Container(
+                height: 50,
+                width: MediaQuery.of(context).size.width,
+                decoration: BoxDecoration(
+                  color: ThemeColor,
+                  borderRadius: BorderRadius.circular(15),
+                ),
+                child: Center(
+                  child: Text("Save",style: Whitebackgroundstyle,),
                 ),
               ),
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(top: 10,bottom: 5,left: 15),
-            child: Text("District",style: CheckoutStyle.copyWith(fontSize: 13,color: Colors.black),),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(top: 5,left: 15,right: 15),
-            child: TextFormField(
-              decoration: InputDecoration(
-                hintText: "City",
-                hintStyle: TextStyle(
-                    color: Colors.black.withAlpha(100),
-                    fontWeight: FontWeight.w500
-                ),
-                fillColor: Colors.grey.shade200,
-                filled: true,
-                focusedBorder: OutlineInputBorder(
-                  borderSide: BorderSide(
-                      color: Colors.grey.shade200
-                  ),
-                  borderRadius: BorderRadius.circular(15),
-
-                ),
-                enabledBorder: OutlineInputBorder(
-                  borderSide: BorderSide(
-                      color: Colors.grey.shade400
-                  ),
-                  borderRadius: BorderRadius.circular(15),
-
-                ),
-                disabledBorder: OutlineInputBorder(
-                  borderSide: BorderSide(
-                      color: Colors.grey.shade200
-                  ),
-                  borderRadius: BorderRadius.circular(15),
-
-                ),
-                errorBorder: OutlineInputBorder(
-                  borderSide: BorderSide(
-                      color: Colors.grey.shade200
-                  ),
-                  borderRadius: BorderRadius.circular(15),
-
-                ),
-              ),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(top: 10,bottom: 5,left: 15),
-            child: Text("Area",style: CheckoutStyle.copyWith(fontSize: 13,color: Colors.black),),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(top: 5,left: 15,right: 15),
-            child: TextFormField(
-              decoration: InputDecoration(
-                hintText: "Tole",
-                hintStyle: TextStyle(
-                    color: Colors.black.withAlpha(100),
-                    fontWeight: FontWeight.w500
-                ),
-                fillColor: Colors.grey.shade200,
-                filled: true,
-                focusedBorder: OutlineInputBorder(
-                  borderSide: BorderSide(
-                      color: Colors.grey.shade200
-                  ),
-                  borderRadius: BorderRadius.circular(15),
-
-                ),
-                enabledBorder: OutlineInputBorder(
-                  borderSide: BorderSide(
-                      color: Colors.grey.shade400
-                  ),
-                  borderRadius: BorderRadius.circular(15),
-
-                ),
-                disabledBorder: OutlineInputBorder(
-                  borderSide: BorderSide(
-                      color: Colors.grey.shade200
-                  ),
-                  borderRadius: BorderRadius.circular(15),
-
-                ),
-                errorBorder: OutlineInputBorder(
-                  borderSide: BorderSide(
-                      color: Colors.grey.shade200
-                  ),
-                  borderRadius: BorderRadius.circular(15),
-
-                ),
-              ),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(top: 10,bottom: 5,left: 15),
-            child: Text("Address",style: CheckoutStyle.copyWith(fontSize: 13,color: Colors.black),),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(top: 5,left: 15,right: 15),
-            child: TextFormField(
-              decoration: InputDecoration(
-                hintText: "Detailed Address",
-
-                hintStyle: TextStyle(
-                    color: Colors.black.withAlpha(100),
-                    fontWeight: FontWeight.w500
-                ),
-                fillColor: Colors.grey.shade200,
-                filled: true,
-                contentPadding: EdgeInsets.symmetric(vertical: 30,horizontal: 10),
-                focusedBorder: OutlineInputBorder(
-                  borderSide: BorderSide(
-                      color: Colors.grey.shade200
-                  ),
-                  borderRadius: BorderRadius.circular(15),
-
-                ),
-                enabledBorder: OutlineInputBorder(
-                  borderSide: BorderSide(
-                      color: Colors.grey.shade400
-                  ),
-                  borderRadius: BorderRadius.circular(15),
-
-                ),
-                disabledBorder: OutlineInputBorder(
-                  borderSide: BorderSide(
-                      color: Colors.grey.shade200
-                  ),
-                  borderRadius: BorderRadius.circular(15),
-
-                ),
-                errorBorder: OutlineInputBorder(
-                  borderSide: BorderSide(
-                      color: Colors.grey.shade200
-                  ),
-                  borderRadius: BorderRadius.circular(15),
-
-                ),
-              ),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(left: 15,right: 15,top: 25),
-            child: Container(
-              height: 50,
-              width: MediaQuery.of(context).size.width,
-              decoration: BoxDecoration(
-                color: ThemeColor,
-                borderRadius: BorderRadius.circular(15),
-              ),
-              child: Center(
-                child: Text("Save",style: Whitebackgroundstyle,),
-              ),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(left: 15,right: 15,top: 15),
+            padding: const EdgeInsets.only(left: 15,right: 15,top: 15,bottom: 10),
             child: Card(
               elevation: 2,
               child: Container(

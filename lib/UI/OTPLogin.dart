@@ -4,6 +4,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:shopifyclone/TextStyles/TextStyles.dart';
+import 'package:shopifyclone/Utilities/BottomNavigation.dart';
 import 'package:shopifyclone/Utilities/Controller.dart';
 import 'package:shopifyclone/Widgets/Home/HomeWidgets.dart';
 import 'package:get/get.dart';
@@ -150,7 +151,7 @@ class _OTPScreenState extends State<OTPScreen> {
                         for(int i=0;i<5;i++)
                           data.add(controllers[i].text.toString());
                         var value=data.join("");
-                        Navigator.push(context, MaterialPageRoute(builder:(context)=>OTPScreen() ));
+                        Navigator.push(context, MaterialPageRoute(builder:(context)=>BottomNavigation() ));
                       },
                       child: Container(
                         height: 60,
