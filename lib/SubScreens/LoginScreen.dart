@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:shopifyclone/TextStyles/TextStyles.dart';
+import 'package:shopifyclone/UI/Signup.dart';
 import 'package:shopifyclone/Utilities/BottomNavigation.dart';
+import 'package:shopifyclone/Utilities/Controller.dart';
 import 'package:shopifyclone/Widgets/Home/HomeWidgets.dart';
+import 'package:get/get.dart';
 class Loginscreen extends StatefulWidget {
   const Loginscreen({super.key});
 
@@ -10,6 +13,7 @@ class Loginscreen extends StatefulWidget {
 }
 
 class _LoginscreenState extends State<Loginscreen> {
+  BagController bottoncontroller=Get.put(BagController());
   TextEditingController phonecontroller=TextEditingController();
   TextEditingController passwordcontroller=TextEditingController();
   @override
@@ -129,15 +133,12 @@ class _LoginscreenState extends State<Loginscreen> {
             padding: const EdgeInsets.only(left: 30,top: 15,right: 30),
             child: Row(
               children: [
-          Container(
-            height: 10,
-            width: 10,
-            decoration: BoxDecoration(
-              border: Border.all(
-                color: Colors.black
-              )
-            ),
-          ),
+                Obx(() {
+                  return GestureDetector(
+                      onTap: bottoncontroller.rememberme.value?bottoncontroller.unsetrememberme:bottoncontroller.setrememberme,
+                      child: Icon(bottoncontroller.rememberme.value?Icons.check_box_outlined:Icons.check_box_outline_blank,size: 18,)
+                  );
+                }),
           Padding(
             padding: const EdgeInsets.only(left: 10),
             child: Text("Remember me"),
@@ -177,7 +178,11 @@ class _LoginscreenState extends State<Loginscreen> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text("New Member?"),
-                            Text("Register now",style: Whitebackgroundstyle.copyWith(color: ThemeColor),)
+                            GestureDetector(
+                                onTap: (){
+                                  Navigator.push(context, MaterialPageRoute(builder: (context)=>SignupScreen()));
+                                },
+                                child: Text("Register now",style: Whitebackgroundstyle.copyWith(color: ThemeColor),))
                           ],
                         ),
                       )

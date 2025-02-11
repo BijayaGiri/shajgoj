@@ -42,7 +42,7 @@ class _BrandsScreenState extends State<BrandsScreen> {
                   spacing: 5,
                   runSpacing: 2,
                   alignment: WrapAlignment.start,
-                  children: List.generate(4, (index)=> DealsYouCanotMiss()),
+                  children: List.generate(4, (index)=> DealsYouCanotMiss(context)),
                 ),
               ),
             ),

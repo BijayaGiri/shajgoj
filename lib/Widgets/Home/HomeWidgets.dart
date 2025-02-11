@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:shopifyclone/SubScreens/Additional%20Products.dart';
 import 'package:shopifyclone/SubScreens/Address.dart';
 import 'package:shopifyclone/SubScreens/LoginScreen.dart';
 import 'package:shopifyclone/SubScreens/LoyaltyProgram.dart';
@@ -214,18 +215,23 @@ Widget RoundedBlueContainer({double ?width}){
     child: Center(child: Text("0.00 Points",style: Whitebackgroundstyle.copyWith(color: Colors.blue),)),
   );
 }
-Widget DealsYouCanotMiss(){
-  return  Padding(
-    padding: const EdgeInsets.only(top: 5),
-    child: SizedBox(
-      height: 180,
-      width: 180,
-      child: ClipRRect(
-          borderRadius: BorderRadius.circular(15),
-          child: Image.asset(
-            "assets/images/HomeScreen/Tresme.png",
-            fit: BoxFit.fill,
-          )),
+Widget DealsYouCanotMiss(BuildContext context){
+  return  GestureDetector(
+    onTap: (){
+      Navigator.push(context, MaterialPageRoute(builder: (context)=>AdditionalProductsScreen()));
+    },
+    child: Padding(
+      padding: const EdgeInsets.only(top: 5),
+      child: SizedBox(
+        height: 180,
+        width: 180,
+        child: ClipRRect(
+            borderRadius: BorderRadius.circular(15),
+            child: Image.asset(
+              "assets/images/HomeScreen/Tresme.png",
+              fit: BoxFit.fill,
+            )),
+      ),
     ),
   );
 }
