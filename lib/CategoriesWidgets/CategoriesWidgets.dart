@@ -18,39 +18,15 @@ Widget SkinCare(BuildContext context,{required String mtitle,required String msu
         ),
       ),
       Padding(
-        padding: const EdgeInsets.only(left: 10,right: 10,top: 15),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            MIcon(context),
-            MIcon(context),
-            MIcon(context),
-            MIcon(context),
-          ],
-        ),
-      ),
-      Padding(
-        padding: const EdgeInsets.only(left: 10,right: 10,top: 5),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            MIcon(context),
-            MIcon(context),
-            MIcon(context),
-            MIcon(context),
-          ],
-        ),
-      ),
-      Padding(
-        padding: const EdgeInsets.only(left: 10,right: 10,top: 5),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            MIcon(context),
-            MIcon(context),
-            MIcon(context),
-            MIcon(context),
-          ],
+        padding: const EdgeInsets.only(top: 15,left: 10,right: 10),
+        child:   Container(
+          width: MediaQuery.of(context).size.width,
+          child: Wrap(
+            spacing: 3,
+            runSpacing: 5,
+            alignment: WrapAlignment.start,
+            children: List.generate(12, (index) => MIcon(context)),
+          ),
         ),
       ),
 

@@ -266,17 +266,19 @@ _bagController.SetBag();
                 ),
                 LastContainer(context,Items: ["Description","Ingredients","Skin Care Routine","Q&A","Customer Reviews"]),
                 HomeHeadline(Heading: "You might also like",mcolor: Colors.black.withAlpha(180)),
-                SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: Padding(
-                    padding: const EdgeInsets.only(top: 10),
-                    child: Row(
-                      children: [
-                        FeaturedProducts(context),
-                        FeaturedProducts(context),
-                        FeaturedProducts(context),
-
-                      ],
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 5),
+                  child: Container(
+                    width: MediaQuery.of(context).size.width,
+                    child: SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Row(
+                        children: List.generate(
+                            4, (index)=>Padding(
+                              padding: const EdgeInsets.symmetric(horizontal: 2),
+                              child: FeaturedProducts(context),
+                            )),
+                      ),
                     ),
                   ),
                 ),

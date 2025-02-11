@@ -34,8 +34,18 @@ class _BrandsScreenState extends State<BrandsScreen> {
               ),
             ),
             HomeHeadline(Heading: "Big savings on brands you 💓 love",mbottom: 5,mtop: 25),
-           DealsYouCanotMiss(),
-            DealsYouCanotMiss(),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 12),
+              child: Container(
+                width: MediaQuery.of(context).size.width,
+                child: Wrap(
+                  spacing: 5,
+                  runSpacing: 2,
+                  alignment: WrapAlignment.start,
+                  children: List.generate(4, (index)=> DealsYouCanotMiss()),
+                ),
+              ),
+            ),
             HomeLastContainer(context, mTitle: "View All Brands", mSubtitle: "All the brands you love in one place"),
             HomeHeadline(Heading: "Quick Links"),
             Padding(

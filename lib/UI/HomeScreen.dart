@@ -36,54 +36,36 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Column(
           children: [
             CrousalSliderWidget(),
-            // Padding(
-            //   padding: const EdgeInsets.only(top: 15),
-            //   child: Text(
-            //     "Unbeatable 🔥 beauty deals",
-            //     style: Whitebackgroundstyle.copyWith(color: Colors.black),
-            //   ),
-            // ),
-           Padding(
-             padding: const EdgeInsets.only(top: 25,left: 10,right: 10),
-             child: Row(
-               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-               children: [
-                 MIcon(context),
-                 MIcon(context), MIcon(context), MIcon(context),
-               ],
-             ),
-           ),
             Padding(
-              padding: const EdgeInsets.only(top: 5,left: 10,right: 10),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  MIcon(context),
-                  MIcon(context),
-                  MIcon(context),
-                  MIcon(context),
-                ],
+              padding: const EdgeInsets.only(top: 15,left: 10,right: 10),
+              child:   Container(
+                width: MediaQuery.of(context).size.width,
+                child: Wrap(
+                  spacing: 2,
+                  runSpacing: 5,
+                  alignment: WrapAlignment.start,
+                  children: List.generate(8, (index) => MIcon(context)),
+                ),
               ),
             ),
-            // Padding(
-            //   padding: const EdgeInsets.symmetric(horizontal: 20),
-            //   child: SizedBox(
-            //       height: 80,
-            //       width: MediaQuery.of(context).size.width,
-            //       child: ClipRRect(
-            //           borderRadius: BorderRadius.circular(15),
-            //           child: Image.asset(
-            //             "assets/images/HomeScreen/WinterBanner.png",
-            //             fit: BoxFit.fill,
-            //           ))),
-            // ),
+
             Padding(
               padding: const EdgeInsets.only(top: 20),
               child: Text("💄 Categories",
                   style: Whitebackgroundstyle.copyWith(color: Colors.black)),
             ),
-            DealsYouCanotMiss(),
-            DealsYouCanotMiss(),
+           Padding(
+             padding: const EdgeInsets.symmetric(horizontal: 10),
+             child: Container(
+               width: MediaQuery.of(context).size.width,
+               child: Wrap(
+                 spacing: 10,
+                 runSpacing: 2,
+                 alignment: WrapAlignment.start,
+                 children: List.generate(4, (index)=> DealsYouCanotMiss()),
+               ),
+             ),
+           ),
             Padding(
               padding: const EdgeInsets.only(top: 20),
               child: Text(
@@ -91,14 +73,27 @@ class _HomeScreenState extends State<HomeScreen> {
                 style: Whitebackgroundstyle.copyWith(color: Colors.black),
               ),
             ),
-           SaveMore(context, imageloc: "assets/images/HomeScreen/WinterBanner.png"),
-           SaveMore(context, imageloc: "assets/images/HomeScreen/WinterBanner.png"),
-           SaveMore(context, imageloc: "assets/images/HomeScreen/WinterBanner.png"),
-           SaveMore(context, imageloc: "assets/images/HomeScreen/WinterBanner.png"),
-
+           Container(
+             width: MediaQuery.of(context).size.width,
+             child: Wrap(
+               children:
+                 List.generate(4, (index)=>SaveMore(context, imageloc: "assets/images/HomeScreen/WinterBanner.png"),),
+             ),
+           ),
+            
             HomeHeadline(Heading: "Featured Products",mtop: 10,mbottom: 10),
-           FeaturedProducts(context,),
-FeaturedProducts(context),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 5),
+            child: Container(
+              width: MediaQuery.of(context).size.width,
+              child: Wrap(
+                spacing: 5,
+                runSpacing: 5,
+                alignment: WrapAlignment.start,
+                children: List.generate(4, (index)=>FeaturedProducts(context)),
+              ),
+            ),
+          ),
             Padding(
               padding: const EdgeInsets.only(left: 15,right: 15,top: 20,bottom: 10),
               child: Container(
@@ -128,44 +123,18 @@ FeaturedProducts(context),
             HomeHeadline(Heading: "All Inclusive Categories for Every LifeStyle 😎",mtop: 10),
 
             Padding(
-              padding: const EdgeInsets.symmetric(vertical: 5),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  MIcon(context),
-                  MIcon(context),
-                  MIcon(context),
-                  MIcon(context),
-
-                ],
+              padding: const EdgeInsets.only(left: 10,right: 10,top: 5),
+              child: Container(
+                width: MediaQuery.of(context).size.width,
+                child: Wrap(
+                  spacing: 2,
+                  runSpacing: 5,
+                  alignment: WrapAlignment.start,
+                  children: List.generate(12, (index) => MIcon(context)),
+                ),
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 5),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  MIcon(context),
-                  MIcon(context),
-                  MIcon(context),
-                  MIcon(context),
 
-                ],
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 5),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  MIcon(context),
-                  MIcon(context),
-                  MIcon(context),
-                  MIcon(context),
-
-                ],
-              ),
-            ),
             HomeHeadline(Heading: "Quick Links",mtop: 30,mbottom: 10),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 2.5),

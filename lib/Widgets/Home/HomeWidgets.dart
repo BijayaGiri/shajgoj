@@ -81,190 +81,91 @@ Widget MIcon(BuildContext context){
 Color ThemeColor=Colors.lightBlue;
 Widget FeaturedProducts(BuildContext context,){
   BagController _bagController=Get.put(BagController());
-  return  Padding(
-    padding: const EdgeInsets.symmetric(horizontal: 10),
-    child: Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-
-        GestureDetector(
-          onTap: (){
-            Navigator.push((context), MaterialPageRoute(builder: (context)=>ProductDiscription()));
-          },
-          child: Container(
-            height: 370,
-            width: 185,
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(15),
-                border: Border.all(
-                    color: Colors.grey.shade200,
-                    width: 2
-                )
+  return  GestureDetector(
+    onTap: (){
+      Navigator.push((context), MaterialPageRoute(builder: (context)=>ProductDiscription()));
+    },
+    child: Container(
+      height: 370,
+      width: 185,
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(15),
+          border: Border.all(
+              color: Colors.grey.shade200,
+              width: 2
+          )
+      ),
+      child:Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(5.0),
+            child: SizedBox(
+              height: 180,
+              width: 180,
+              child: ClipRRect(
+                  borderRadius: BorderRadius.circular(10),
+                  child: Image.asset(
+                    "assets/images/HomeScreen/Tresme.png",
+                    fit: BoxFit.fill,
+                  )),
             ),
-            child:Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(5.0),
-                  child: SizedBox(
-                    height: 180,
-                    width: 180,
-                    child: ClipRRect(
-                        borderRadius: BorderRadius.circular(10),
-                        child: Image.asset(
-                          "assets/images/HomeScreen/Tresme.png",
-                          fit: BoxFit.fill,
-                        )),
-                  ),
-                ),
-                Flexible(child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 10),
-                  child: Text("Cosrx Salicylic Acid Daily Gentle Cleanser",style: BottomNavigationstyle,textAlign: TextAlign.center,),
-                )),
-                Padding(
-                  padding: const EdgeInsets.only(top: 20),
-                  child: Text("150ml",style: BottomNavigationstyle.copyWith(fontWeight: FontWeight.normal),),
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 15,vertical: 5),
-                  child: Container(
-                    height: 25,
-                    width: 185,
-                    decoration: BoxDecoration(
-                      color: Colors.grey.shade200,
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: Center(
-                      child: Text("Save 401 Taka",style: TextStyle(
-                        fontWeight: FontWeight.w700,
-                        color: Colors.black54,
-                        fontSize: 12,
-                      ),
-                      ),
-                    ),
-                  ),
-                ),
-                Text("₹500",style:  TextStyle(
-                  fontWeight: FontWeight.w800,
-                  color: Colors.black.withAlpha(200),
-                  fontSize: 12, )),
-                GestureDetector(
-                  onTap: _bagController.SetBag,
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 15,vertical: 10),
-                    child: Container(
-                        height: 35,
-                        width: 185,
-                        decoration: BoxDecoration(
-                          color:ThemeColor,
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Icon(Icons.add,color: Colors.white,),
-                            Text("Add to cart",style: Whitebackgroundstyle.copyWith(fontSize: 12),)
-                          ],
-                        )
-                    ),
-                  ),
-                ),
-
-              ],
-            ) ,
           ),
-        ),
-        GestureDetector(
-          onTap: (){
-            Navigator.push((context), MaterialPageRoute(builder: (context)=>ProductDiscription()));
-          },
-          child: Container(
-            height: 370,
-            width: 185,
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(15),
-                border: Border.all(
-                    color: Colors.grey.shade200,
-                    width: 2
-                )
+          Flexible(child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 10),
+            child: Text("Cosrx Salicylic Acid Daily Gentle Cleanser",style: BottomNavigationstyle,textAlign: TextAlign.center,),
+          )),
+          Padding(
+            padding: const EdgeInsets.only(top: 20),
+            child: Text("150ml",style: BottomNavigationstyle.copyWith(fontWeight: FontWeight.normal),),
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 15,vertical: 5),
+            child: Container(
+              height: 25,
+              width: 185,
+              decoration: BoxDecoration(
+                color: Colors.grey.shade200,
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: Center(
+                child: Text("Save 401 Taka",style: TextStyle(
+                  fontWeight: FontWeight.w700,
+                  color: Colors.black54,
+                  fontSize: 12,
+                ),
+                ),
+              ),
             ),
-            child:Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(5.0),
-                  child: SizedBox(
-                    height: 180,
-                    width: 180,
-                    child: ClipRRect(
-                        borderRadius: BorderRadius.circular(10),
-                        child: Image.asset(
-                          "assets/images/HomeScreen/Tresme.png",
-                          fit: BoxFit.fill,
-                        )),
-                  ),
-                ),
-                Flexible(child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 10),
-                  child: Text("Cosrx Salicylic Acid Daily Gentle Cleanser",style: BottomNavigationstyle,textAlign: TextAlign.center,),
-                )),
-                Padding(
-                  padding: const EdgeInsets.only(top: 20),
-                  child: Text("150ml",style: BottomNavigationstyle.copyWith(fontWeight: FontWeight.normal),),
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 15,vertical: 5),
-                  child: Container(
-                    height: 25,
-                    width: 185,
-                    decoration: BoxDecoration(
-                      color: Colors.grey.shade200,
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: Center(
-                      child: Text("Save 401 Taka",style: TextStyle(
-                        fontWeight: FontWeight.w700,
-                        color: Colors.black54,
-                        fontSize: 12,
-                      ),
-                      ),
-                    ),
-                  ),
-                ),
-                Text("₹500",style:  TextStyle(
-                  fontWeight: FontWeight.w800,
-                  color: Colors.black.withAlpha(200),
-                  fontSize: 12, )),
-                GestureDetector(
-                  onTap: _bagController.SetBag,
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 15,vertical: 10),
-                    child: Container(
-                        height: 35,
-                        width: 185,
-                        decoration: BoxDecoration(
-                          color:ThemeColor,
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Icon(Icons.add,color: Colors.white,),
-                            Text("Add to cart",style: Whitebackgroundstyle.copyWith(fontSize: 12),)
-                          ],
-                        )
-                    ),
-                  ),
-                ),
-
-              ],
-            ) ,
           ),
-        ),
+          Text("₹500",style:  TextStyle(
+            fontWeight: FontWeight.w800,
+            color: Colors.black.withAlpha(200),
+            fontSize: 12, )),
+          GestureDetector(
+            onTap: _bagController.SetBag,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 15,vertical: 10),
+              child: Container(
+                  height: 35,
+                  width: 185,
+                  decoration: BoxDecoration(
+                    color:ThemeColor,
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(Icons.add,color: Colors.white,),
+                      Text("Add to cart",style: Whitebackgroundstyle.copyWith(fontSize: 12),)
+                    ],
+                  )
+              ),
+            ),
+          ),
 
-
-
-      ],
+        ],
+      ) ,
     ),
   );
 }
@@ -316,30 +217,15 @@ Widget RoundedBlueContainer({double ?width}){
 Widget DealsYouCanotMiss(){
   return  Padding(
     padding: const EdgeInsets.only(top: 5),
-    child: Row(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      children: [
-        SizedBox(
-          height: 180,
-          width: 180,
-          child: ClipRRect(
-              borderRadius: BorderRadius.circular(15),
-              child: Image.asset(
-                "assets/images/HomeScreen/Tresme.png",
-                fit: BoxFit.fill,
-              )),
-        ),
-        SizedBox(
-          height: 180,
-          width: 180,
-          child: ClipRRect(
-              borderRadius: BorderRadius.circular(15),
-              child: Image.asset(
-                "assets/images/HomeScreen/Tresme.png",
-                fit: BoxFit.fill,
-              )),
-        )
-      ],
+    child: SizedBox(
+      height: 180,
+      width: 180,
+      child: ClipRRect(
+          borderRadius: BorderRadius.circular(15),
+          child: Image.asset(
+            "assets/images/HomeScreen/Tresme.png",
+            fit: BoxFit.fill,
+          )),
     ),
   );
 }
