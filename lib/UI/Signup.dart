@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:shopifyclone/SubScreens/LoginScreen.dart';
 import 'package:shopifyclone/TextStyles/TextStyles.dart';
 import 'package:shopifyclone/UI/OTPLogin.dart';
-import 'package:shopifyclone/Utilities/BottomNavigation.dart';
 import 'package:shopifyclone/Utilities/Controller.dart';
 import 'package:shopifyclone/Widgets/Home/HomeWidgets.dart';
 import 'package:get/get.dart';
@@ -282,13 +281,37 @@ class _SignupScreenState extends State<SignupScreen> {
                  ],
                ),
              ),
+
+              Obx((){
+                return bottoncontroller.Signuppressed.value&&bottoncontroller.checkbox.value==false? Align(
+                  alignment: Alignment.centerLeft,
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 35,top: 2),
+                    child: Text("! Hit the Check Box",style: TextStyle(
+                      color: Colors.red,
+                      fontSize: 12,
+                    ),
+                      textAlign: TextAlign.start,),
+                  ),
+                ):Padding(
+                  padding: const EdgeInsets.only(left: 35,top: 2),
+                  child: Text("",style: TextStyle(
+                    color: Colors.red,
+                    fontSize: 12,
+                  ),
+                    textAlign: TextAlign.start,),
+                );
+              }),
               Padding(
                 padding: const EdgeInsets.only(left: 30, right: 30, top: 70),
                 child: Column(
                   children: [
                     GestureDetector(
                       onTap: (){
-                       if(_formkey.currentState!.validate()){
+
+                        bottoncontroller.Signuppress();
+                       if(_formkey.currentState!.validate()&&bottoncontroller.checkbox.value){
+                         bottoncontroller.unsetcheckbox();
                          Navigator.push(context, MaterialPageRoute(builder:(context)=>OTPScreen() ));
                        }
                       },
@@ -323,7 +346,10 @@ class _SignupScreenState extends State<SignupScreen> {
                           Text("Already a member? "),
                           GestureDetector(
                               onTap: () {
+                                bottoncontroller.unsetcheckbox();
+                                bottoncontroller.Signupdepress();
                                 Navigator.push(
+
                                     context,
                                     MaterialPageRoute(
                                         builder: (context) => Loginscreen()));

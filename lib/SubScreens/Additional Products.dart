@@ -18,13 +18,13 @@ class _AdditionalProductsScreenState extends State<AdditionalProductsScreen> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            Padding(
-              padding: const EdgeInsets.only(top: 10),
-              child: Container(
-                width: MediaQuery.of(context).size.width,
-                child: Wrap(
-                  children: List.generate(12, (index)=>FeaturedProducts(context)),
-                ),
+            Container(
+              width: MediaQuery.of(context).size.width,
+              child: Wrap(
+                alignment: WrapAlignment.center,
+                spacing: 5,
+                runSpacing: 5,
+                children: List.generate(12, (index)=>FeaturedProducts(context)),
               ),
             )
           ],

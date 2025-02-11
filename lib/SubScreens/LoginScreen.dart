@@ -13,6 +13,12 @@ class Loginscreen extends StatefulWidget {
 }
 
 class _LoginscreenState extends State<Loginscreen> {
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    bottoncontroller.dispose();
+  }
   final _formkey=GlobalKey<FormState>();
   BagController bottoncontroller=Get.put(BagController());
   TextEditingController phonecontroller=TextEditingController();
@@ -182,10 +188,34 @@ class _LoginscreenState extends State<Loginscreen> {
               ],
             ),
           ),
+              Obx((){
+                return bottoncontroller.Loginpressed.value&&bottoncontroller.rememberme.value==false? Align(
+                  alignment: Alignment.centerLeft,
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 35,top: 2),
+                    child: Text("! Hit the Check Box",style: TextStyle(
+                      color: Colors.red,
+                      fontSize: 12,
+                    ),
+                    textAlign: TextAlign.start,),
+                  ),
+                ):Padding(
+                  padding: const EdgeInsets.only(left: 35,top: 2),
+                  child: Text("",style: TextStyle(
+                    color: Colors.red,
+                    fontSize: 12,
+                  ),
+                    textAlign: TextAlign.start,),
+                );
+              }),
               GestureDetector(
                 onTap: (){
-                  if(_formkey.currentState!.validate())
+                  bottoncontroller.Loginpress();
+                  if(_formkey.currentState!.validate()&&bottoncontroller.rememberme.value){
+                    bottoncontroller.unsetcheckbox();
                     Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>BottomNavigation()));
+
+                  }
                 },
                 child: Padding(
                   padding: const EdgeInsets.only(left: 30,right: 30,top: 80),
@@ -214,6 +244,8 @@ class _LoginscreenState extends State<Loginscreen> {
                             Text("New Member?"),
                             GestureDetector(
                                 onTap: (){
+                                  bottoncontroller.unsetrememberme();
+                                  bottoncontroller.Logindepress();
                                   Navigator.push(context, MaterialPageRoute(builder: (context)=>SignupScreen()));
                                 },
                                 child: Text("Register now",style: Whitebackgroundstyle.copyWith(color: ThemeColor),))
