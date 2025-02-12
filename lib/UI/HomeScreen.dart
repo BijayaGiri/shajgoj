@@ -51,7 +51,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
             Padding(
               padding: const EdgeInsets.only(top: 20),
-              child: Text("💄 Categories",
+              child: Text("Brands",
                   style: Whitebackgroundstyle.copyWith(color: Colors.black)),
             ),
            Padding(
@@ -77,7 +77,7 @@ class _HomeScreenState extends State<HomeScreen> {
              width: MediaQuery.of(context).size.width,
              child: Wrap(
                children:
-                 List.generate(4, (index)=>SaveMore(context, imageloc: "assets/images/HomeScreen/WinterBanner.png"),),
+                 List.generate(2, (index)=>SaveMore(context, imageloc: "assets/images/HomeScreen/WinterBanner.png"),),
              ),
            ),
             

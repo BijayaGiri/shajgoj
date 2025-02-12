@@ -34,7 +34,7 @@ class _LoginscreenState extends State<Loginscreen> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Align(
-                alignment: Alignment.centerLeft,
+                alignment: Alignment.center,
                 child: Padding(
                   padding: const EdgeInsets.only(left: 30),
                   child: SizedBox(
@@ -188,26 +188,7 @@ class _LoginscreenState extends State<Loginscreen> {
               ],
             ),
           ),
-              Obx((){
-                return bottoncontroller.Loginpressed.value&&bottoncontroller.rememberme.value==false? Align(
-                  alignment: Alignment.centerLeft,
-                  child: Padding(
-                    padding: const EdgeInsets.only(left: 35,top: 2),
-                    child: Text("! Hit the Check Box",style: TextStyle(
-                      color: Colors.red,
-                      fontSize: 12,
-                    ),
-                    textAlign: TextAlign.start,),
-                  ),
-                ):Padding(
-                  padding: const EdgeInsets.only(left: 35,top: 2),
-                  child: Text("",style: TextStyle(
-                    color: Colors.red,
-                    fontSize: 12,
-                  ),
-                    textAlign: TextAlign.start,),
-                );
-              }),
+
               GestureDetector(
                 onTap: (){
                   bottoncontroller.Loginpress();

@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:shopifyclone/SubScreens/LoginScreen.dart';
+import 'package:shopifyclone/SubScreens/FirstCrousalScreen.dart';
 class Splashscreen extends StatefulWidget {
   const Splashscreen({super.key});
 
@@ -15,7 +15,7 @@ class _SplashscreenState extends State<Splashscreen> {
     // TODO: implement initState
     super.initState();
     Timer(Duration(seconds: 2), (){
-      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>Loginscreen()));
+      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>Firstcrousalscreen()));
     });
   }
   @override
