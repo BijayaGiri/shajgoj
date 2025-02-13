@@ -192,7 +192,7 @@ class _LoginscreenState extends State<Loginscreen> {
               GestureDetector(
                 onTap: (){
                   bottoncontroller.Loginpress();
-                  if(_formkey.currentState!.validate()&&bottoncontroller.rememberme.value){
+                  if(_formkey.currentState!.validate()){
                     bottoncontroller.unsetcheckbox();
                     Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>BottomNavigation()));
 

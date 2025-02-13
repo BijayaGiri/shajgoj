@@ -72,7 +72,7 @@ class _ProfileState extends State<Profile> {
                   child: Container(
                     width: MediaQuery.of(context).size.width,
                     decoration: BoxDecoration(
-        color:Color(0xffd7dbdd),
+        color:Color(0xfff2f3f4),
                       borderRadius: BorderRadius.circular(20)
                     ),
                     child: Column(
@@ -83,7 +83,7 @@ class _ProfileState extends State<Profile> {
                             Expanded(
                               child: Container(
                                decoration: BoxDecoration(
-                                   color: Color(0xffbdc3c7),
+                                   color: Color(0xffd7dbdd),
                                  borderRadius: BorderRadius.only(topRight: Radius.circular(20),topLeft: Radius.circular(20))
                                ),
                                 height: 50,
@@ -107,6 +107,7 @@ class _ProfileState extends State<Profile> {
                       
                       SizedBox(
                         height: 290,
+
                         child: ListView.builder(
                           shrinkWrap: true,
                           physics: NeverScrollableScrollPhysics(),
@@ -152,7 +153,7 @@ class _ProfileState extends State<Profile> {
               child: Container(
                 width: MediaQuery.of(context).size.width,
                 decoration: BoxDecoration(
-                    color:Color(0xffd7dbdd),
+                    color:Color(0xfff2f3f4),
                     borderRadius: BorderRadius.circular(20)
                 ),
                 child: Column(
@@ -163,7 +164,7 @@ class _ProfileState extends State<Profile> {
                         Expanded(
                           child: Container(
                             decoration: BoxDecoration(
-                                color: Color(0xffbdc3c7),
+                                color: Color(0xffd7dbdd),
                                 borderRadius: BorderRadius.only(topRight: Radius.circular(20),topLeft: Radius.circular(20))
                             ),
                             height: 50,
@@ -223,7 +224,7 @@ class _ProfileState extends State<Profile> {
               child: Container(
                 width: MediaQuery.of(context).size.width,
                 decoration: BoxDecoration(
-                    color:Color(0xffd7dbdd),
+                    color:Color(0xfff2f3f4),
                     borderRadius: BorderRadius.circular(20)
                 ),
                 child: Column(
@@ -234,7 +235,7 @@ class _ProfileState extends State<Profile> {
                         Expanded(
                           child: Container(
                             decoration: BoxDecoration(
-                                color: Color(0xffbdc3c7),
+                                color: Color(0xffd7dbdd),
                                 borderRadius: BorderRadius.only(topRight: Radius.circular(20),topLeft: Radius.circular(20))
                             ),
                             height: 50,
@@ -304,7 +305,7 @@ class _ProfileState extends State<Profile> {
                   height: 55,
                   width: MediaQuery.of(context).size.width,
                   decoration: BoxDecoration(
-                      color:Color(0xffd7dbdd),
+                      color:Color(0xfff2f3f4),
                       borderRadius: BorderRadius.circular(20)
                   ),
                   child: Padding(

@@ -65,3 +65,40 @@ class BagController extends GetxController{
     fav.value=false;
   }
 }
+class DiscriptionController extends GetxController{
+  RxBool Description=false.obs;
+  RxBool Ingredients=false.obs;
+  RxBool SkinCare=false.obs;
+  RxBool QandA=false.obs;
+  RxBool CustomerReviews=false.obs;
+  void SetDescription(){
+    Description.value=true;
+  }
+  void SetIngredients(){
+    Ingredients.value=true;
+  }
+  void SetSkinCare(){
+    SkinCare.value=true;
+  }
+  void SetQandA(){
+    QandA.value=true;
+  }
+  void SetCustomerReviews(){
+    CustomerReviews.value=true;
+  }
+  void UnSetDescription(){
+    Description.value=false;
+  }
+  void UnSetIngredients(){
+    Ingredients.value=false;
+  }
+  void UnSetSkinCare(){
+    SkinCare.value=false;
+  }
+  void UnSetQandA(){
+    QandA.value=false;
+  }
+  void UnSetCustomerReviews(){
+    CustomerReviews.value=false;
+  }
+}
