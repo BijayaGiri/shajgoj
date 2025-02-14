@@ -7,7 +7,7 @@ class ButtonController extends GetxController{
     Loginobscure.value=!Loginobscure.value;
   }
   void toogleObscureSignup(){
-    Signupobscure.value=!Loginobscure.value;
+    Signupobscure.value=!Signupobscure.value;
   }
 }
 class BagController extends GetxController{
