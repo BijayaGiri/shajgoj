@@ -14,6 +14,7 @@ class SignupScreen extends StatefulWidget {
 }
 
 class _SignupScreenState extends State<SignupScreen> {
+  ButtonController _buttonController=Get.put(ButtonController());
   final _formkey=GlobalKey<FormState>();
   BagController bottoncontroller = Get.put(BagController());
   TextEditingController phonecontroller = TextEditingController();
@@ -198,54 +199,62 @@ class _SignupScreenState extends State<SignupScreen> {
                        ),
                      ),
                    ),
-                   Padding(
-                     padding: const EdgeInsets.only(left: 30, right: 30, top: 10),
-                     child: TextFormField(
-                       validator: (value){
-                         if(value?.isEmpty ?? true){
-                           return " Enter password";
-                         }
-                         return null;
-                       } ,
+                  Obx((){
+                    return  Padding(
+                      padding: const EdgeInsets.only(left: 30, right: 30, top: 10),
+                      child: TextFormField(
+obscureText: _buttonController.Signupobscure.value,
+                        validator: (value){
+                          if(value?.isEmpty ?? true){
+                            return " Enter password";
+                          }
+                          return null;
+                        } ,
 
-                       controller: passwordcontroller,
-                       decoration: InputDecoration(
-                         focusedErrorBorder:OutlineInputBorder(
-                           borderSide: BorderSide(
-                               color: Colors.grey.shade200
-                           ),
-                           borderRadius: BorderRadius.circular(15),
+                        controller: passwordcontroller,
+                        decoration: InputDecoration(
+                          focusedErrorBorder:OutlineInputBorder(
+                            borderSide: BorderSide(
+                                color: Colors.grey.shade200
+                            ),
+                            borderRadius: BorderRadius.circular(15),
 
-                         ) ,
-                         hintText: "Strong Password",
-                         suffixIcon: Icon(
-                           Icons.call,
-                           color: Colors.grey.shade400,
-                         ),
-                         hintStyle: TextStyle(
-                             color: Colors.black.withAlpha(100),
-                             fontWeight: FontWeight.w500),
-                         fillColor: Colors.grey.shade200,
-                         filled: true,
-                         focusedBorder: OutlineInputBorder(
-                           borderSide: BorderSide(color: Colors.grey.shade200),
-                           borderRadius: BorderRadius.circular(15),
-                         ),
-                         enabledBorder: OutlineInputBorder(
-                           borderSide: BorderSide(color: Colors.grey.shade200),
-                           borderRadius: BorderRadius.circular(15),
-                         ),
-                         disabledBorder: OutlineInputBorder(
-                           borderSide: BorderSide(color: Colors.grey.shade200),
-                           borderRadius: BorderRadius.circular(15),
-                         ),
-                         errorBorder: OutlineInputBorder(
-                           borderSide: BorderSide(color: Colors.grey.shade200),
-                           borderRadius: BorderRadius.circular(15),
-                         ),
-                       ),
-                     ),
-                   ),
+                          ) ,
+                          hintText: "Strong Password",
+                          suffixIcon: GestureDetector(
+                            onTap: (){
+                              _buttonController.toogleObscureSignup();
+                            },
+                            child: Icon(
+                              Icons.remove_red_eye,
+                              color: Colors.grey.shade400,
+                            ),
+                          ),
+                          hintStyle: TextStyle(
+                              color: Colors.black.withAlpha(100),
+                              fontWeight: FontWeight.w500),
+                          fillColor: Colors.grey.shade200,
+                          filled: true,
+                          focusedBorder: OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.grey.shade200),
+                            borderRadius: BorderRadius.circular(15),
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.grey.shade200),
+                            borderRadius: BorderRadius.circular(15),
+                          ),
+                          disabledBorder: OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.grey.shade200),
+                            borderRadius: BorderRadius.circular(15),
+                          ),
+                          errorBorder: OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.grey.shade200),
+                            borderRadius: BorderRadius.circular(15),
+                          ),
+                        ),
+                      ),
+                    );
+                  }),
                    Padding(
                      padding: const EdgeInsets.only(left: 30, top: 15, right: 30),
                      child: Row(
@@ -346,6 +355,7 @@ class _SignupScreenState extends State<SignupScreen> {
                           Text("Already a member? "),
                           GestureDetector(
                               onTap: () {
+                                _buttonController.Signupobscure.value=true;
                                 bottoncontroller.unsetcheckbox();
                                 bottoncontroller.Signupdepress();
                                 Navigator.push(

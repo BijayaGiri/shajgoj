@@ -5,6 +5,7 @@ import 'package:shopifyclone/Utilities/BottomNavigation.dart';
 import 'package:shopifyclone/Utilities/Controller.dart';
 import 'package:shopifyclone/Widgets/Home/HomeWidgets.dart';
 import 'package:get/get.dart';
+
 class Loginscreen extends StatefulWidget {
   const Loginscreen({super.key});
 
@@ -13,16 +14,18 @@ class Loginscreen extends StatefulWidget {
 }
 
 class _LoginscreenState extends State<Loginscreen> {
+  ButtonController _buttonController = Get.put(ButtonController());
   @override
   void dispose() {
     // TODO: implement dispose
     super.dispose();
     bottoncontroller.dispose();
   }
-  final _formkey=GlobalKey<FormState>();
-  BagController bottoncontroller=Get.put(BagController());
-  TextEditingController phonecontroller=TextEditingController();
-  TextEditingController passwordcontroller=TextEditingController();
+
+  final _formkey = GlobalKey<FormState>();
+  BagController bottoncontroller = Get.put(BagController());
+  TextEditingController phonecontroller = TextEditingController();
+  TextEditingController passwordcontroller = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -45,7 +48,13 @@ class _LoginscreenState extends State<Loginscreen> {
               ),
               Padding(
                 padding: const EdgeInsets.only(top: 70),
-                child: Text("Welcome back",style: Whitebackgroundstyle.copyWith(color: ThemeColor,fontSize: 35,fontWeight: FontWeight.w800),),
+                child: Text(
+                  "Welcome back",
+                  style: Whitebackgroundstyle.copyWith(
+                      color: ThemeColor,
+                      fontSize: 35,
+                      fontWeight: FontWeight.w800),
+                ),
               ),
               Text("signin to access your account"),
               Form(
@@ -53,10 +62,11 @@ class _LoginscreenState extends State<Loginscreen> {
                 child: Column(
                   children: [
                     Padding(
-                      padding: const EdgeInsets.only(left: 30,right: 30,top: 30),
+                      padding:
+                          const EdgeInsets.only(left: 30, right: 30, top: 30),
                       child: TextFormField(
-                        validator: (value){
-                          if(value?.isEmpty ?? true){
+                        validator: (value) {
+                          if (value?.isEmpty ?? true) {
                             return "Enter Phone number";
                           }
                           return null;
@@ -64,172 +74,186 @@ class _LoginscreenState extends State<Loginscreen> {
                         controller: phonecontroller,
                         decoration: InputDecoration(
                           hintText: "Enter your phone number",
-                          suffixIcon: Icon(Icons.call,color: Colors.grey.shade400,),
+                          suffixIcon: Icon(
+                            Icons.call,
+                            color: Colors.grey.shade400,
+                          ),
                           hintStyle: TextStyle(
                               color: Colors.black.withAlpha(100),
-                              fontWeight: FontWeight.w500
-                          ),
+                              fontWeight: FontWeight.w500),
                           fillColor: Colors.grey.shade200,
                           filled: true,
                           focusedBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                                color: Colors.grey.shade200
-                            ),
+                            borderSide: BorderSide(color: Colors.grey.shade200),
                             borderRadius: BorderRadius.circular(15),
-
                           ),
                           enabledBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                                color: Colors.grey.shade200
-                            ),
+                            borderSide: BorderSide(color: Colors.grey.shade200),
                             borderRadius: BorderRadius.circular(15),
-
                           ),
                           disabledBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                                color: Colors.grey.shade200
-                            ),
+                            borderSide: BorderSide(color: Colors.grey.shade200),
                             borderRadius: BorderRadius.circular(15),
-
                           ),
                           errorBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                                color: Colors.grey.shade200
-                            ),
+                            borderSide: BorderSide(color: Colors.grey.shade200),
                             borderRadius: BorderRadius.circular(15),
-
                           ),
-                          focusedErrorBorder:OutlineInputBorder(
-                            borderSide: BorderSide(
-                                color: Colors.grey.shade200
-                            ),
+                          focusedErrorBorder: OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.grey.shade200),
                             borderRadius: BorderRadius.circular(15),
-
-                          ) ,
+                          ),
                         ),
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(left: 30,right: 30,top: 30),
-                      child: TextFormField(
-                        validator: (value){
-                          if(value?.isEmpty ?? true){
-                            return "Enter password";
-                          }
-                          return null;
-                        },
-                        controller: passwordcontroller,
-                        decoration: InputDecoration(
-                          hintText: "Password",
-                          suffixIcon: Icon(Icons.lock,color: Colors.grey.shade400,),
-                          hintStyle: TextStyle(
-                              color: Colors.black.withAlpha(100),
-                              fontWeight: FontWeight.w500
-                          ),
-                          fillColor: Colors.grey.shade200,
-                          filled: true,
-                          focusedErrorBorder:OutlineInputBorder(
-                            borderSide: BorderSide(
-                                color: Colors.grey.shade200
+                      padding:
+                          const EdgeInsets.only(left: 30, right: 30, top: 30),
+                      child: Obx(() {
+                        return TextFormField(
+                          obscureText: _buttonController.Loginobscure.value,
+                          validator: (value) {
+                            if (value?.isEmpty ?? true) {
+                              return "Enter password";
+                            }
+                            return null;
+                          },
+                          controller: passwordcontroller,
+                          decoration: InputDecoration(
+                            hintText: "Password",
+                            suffixIcon: GestureDetector(
+                                onTap: () {
+                                  print("tapped");
+                                  _buttonController.toogleObscureLogin();
+                                },
+                                child: Icon(
+                                  Icons.remove_red_eye,
+                                  color: Colors.grey.shade400,
+                                )),
+                            hintStyle: TextStyle(
+                                color: Colors.black.withAlpha(100),
+                                fontWeight: FontWeight.w500),
+                            fillColor: Colors.grey.shade200,
+                            filled: true,
+                            focusedErrorBorder: OutlineInputBorder(
+                              borderSide:
+                                  BorderSide(color: Colors.grey.shade200),
+                              borderRadius: BorderRadius.circular(15),
                             ),
-                            borderRadius: BorderRadius.circular(15),
-
-                          ) ,
-                          focusedBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                                color: Colors.grey.shade200
+                            focusedBorder: OutlineInputBorder(
+                              borderSide:
+                                  BorderSide(color: Colors.grey.shade200),
+                              borderRadius: BorderRadius.circular(15),
                             ),
-                            borderRadius: BorderRadius.circular(15),
-
-                          ),
-                          enabledBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                                color: Colors.grey.shade200
+                            enabledBorder: OutlineInputBorder(
+                              borderSide:
+                                  BorderSide(color: Colors.grey.shade200),
+                              borderRadius: BorderRadius.circular(15),
                             ),
-                            borderRadius: BorderRadius.circular(15),
-
-                          ),
-                          disabledBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                                color: Colors.grey.shade200
+                            disabledBorder: OutlineInputBorder(
+                              borderSide:
+                                  BorderSide(color: Colors.grey.shade200),
+                              borderRadius: BorderRadius.circular(15),
                             ),
-                            borderRadius: BorderRadius.circular(15),
-
-                          ),
-                          errorBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                                color: Colors.grey.shade200
+                            errorBorder: OutlineInputBorder(
+                              borderSide:
+                                  BorderSide(color: Colors.grey.shade200),
+                              borderRadius: BorderRadius.circular(15),
                             ),
-                            borderRadius: BorderRadius.circular(15),
-
                           ),
-                        ),
-                      ),
+                        );
+                      }),
                     ),
                   ],
                 ),
               ),
-          Padding(
-            padding: const EdgeInsets.only(left: 30,top: 15,right: 30),
-            child: Row(
-              children: [
-                Obx(() {
-                  return GestureDetector(
-                      onTap: bottoncontroller.rememberme.value?bottoncontroller.unsetrememberme:bottoncontroller.setrememberme,
-                      child: Icon(bottoncontroller.rememberme.value?Icons.check_box_outlined:Icons.check_box_outline_blank,size: 18,)
-                  );
-                }),
-          Padding(
-            padding: const EdgeInsets.only(left: 10),
-            child: Text("Remember me"),
-          ),
-          Spacer(),
-          Text("Forgot password ?",style: TextStyle(color: ThemeColor),)
-              ],
-            ),
-          ),
-
+              Padding(
+                padding: const EdgeInsets.only(left: 30, top: 15, right: 30),
+                child: Row(
+                  children: [
+                    Obx(() {
+                      return GestureDetector(
+                          onTap: bottoncontroller.rememberme.value
+                              ? bottoncontroller.unsetrememberme
+                              : bottoncontroller.setrememberme,
+                          child: Icon(
+                            bottoncontroller.rememberme.value
+                                ? Icons.check_box_outlined
+                                : Icons.check_box_outline_blank,
+                            size: 18,
+                          ));
+                    }),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 10),
+                      child: Text("Remember me"),
+                    ),
+                    Spacer(),
+                    Text(
+                      "Forgot password ?",
+                      style: TextStyle(color: ThemeColor),
+                    )
+                  ],
+                ),
+              ),
               GestureDetector(
-                onTap: (){
+                onTap: () {
                   bottoncontroller.Loginpress();
-                  if(_formkey.currentState!.validate()){
+                  if (_formkey.currentState!.validate()) {
                     bottoncontroller.unsetcheckbox();
-                    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>BottomNavigation()));
-
+                    Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => BottomNavigation()));
                   }
                 },
                 child: Padding(
-                  padding: const EdgeInsets.only(left: 30,right: 30,top: 80),
+                  padding: const EdgeInsets.only(left: 30, right: 30, top: 80),
                   child: Column(
                     children: [
                       Container(
                         height: 60,
                         width: MediaQuery.of(context).size.width,
                         decoration: BoxDecoration(
-                          color: ThemeColor,
-                          borderRadius: BorderRadius.circular(15)
-                        ),
+                            color: ThemeColor,
+                            borderRadius: BorderRadius.circular(15)),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Text("Login",style: Whitebackgroundstyle.copyWith(fontWeight: FontWeight.w500,fontSize: 16),),
-                            Icon(Icons.arrow_forward_ios,color: Colors.white,)
+                            Text(
+                              "Login",
+                              style: Whitebackgroundstyle.copyWith(
+                                  fontWeight: FontWeight.w500, fontSize: 16),
+                            ),
+                            Icon(
+                              Icons.arrow_forward_ios,
+                              color: Colors.white,
+                            )
                           ],
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsets.only(top:20,bottom: 20,left: 30,right: 30),
+                        padding: const EdgeInsets.only(
+                            top: 20, bottom: 20, left: 30, right: 30),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text("New Member?"),
                             GestureDetector(
-                                onTap: (){
+                                onTap: () {
+                                  _buttonController.Loginobscure.value=true;
                                   bottoncontroller.unsetrememberme();
                                   bottoncontroller.Logindepress();
-                                  Navigator.push(context, MaterialPageRoute(builder: (context)=>SignupScreen()));
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              SignupScreen()));
                                 },
-                                child: Text("Register now",style: Whitebackgroundstyle.copyWith(color: ThemeColor),))
+                                child: Text(
+                                  "Register now",
+                                  style: Whitebackgroundstyle.copyWith(
+                                      color: ThemeColor),
+                                ))
                           ],
                         ),
                       )
@@ -237,7 +261,6 @@ class _LoginscreenState extends State<Loginscreen> {
                   ),
                 ),
               ),
-
             ],
           ),
         ),

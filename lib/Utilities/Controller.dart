@@ -1,6 +1,15 @@
 import 'dart:async';
 import 'package:get/get.dart';
-
+class ButtonController extends GetxController{
+  RxBool Loginobscure=true.obs;
+  RxBool Signupobscure=true.obs;
+  void toogleObscureLogin(){
+    Loginobscure.value=!Loginobscure.value;
+  }
+  void toogleObscureSignup(){
+    Signupobscure.value=!Loginobscure.value;
+  }
+}
 class BagController extends GetxController{
   RxBool Loginpressed=false.obs;
   RxBool Signuppressed=false.obs;
